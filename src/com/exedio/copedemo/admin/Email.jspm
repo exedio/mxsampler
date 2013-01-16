@@ -24,7 +24,6 @@
 package com.exedio.copedemo.admin;
 
 import static com.exedio.copedemo.admin.EmailCop.ADDRESS;
-import static com.exedio.copedemo.admin.EmailCop.ATTACHMENT;
 
 final class Email_Jspm
 {
@@ -46,7 +45,6 @@ final class Email_Jspm
 		<form method="post">
 			Email Address:
 			<input name="<%=ADDRESS%>"<% if(address!=null){%> value="<%=address%>"<%} %> size="40"></input>
-			<input type="checkbox" name="<%=ATTACHMENT%>"></input> attachment
 			<input type="submit" value="Send"></input>
 		</form><%
 	}

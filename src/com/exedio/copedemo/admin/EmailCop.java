@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.exedio.copedemo.MainProperties;
 import com.exedio.copedemo.misc.Hostname;
-import com.exedio.copedemo.misc.ResourceDataSource;
 import com.exedio.sendmail.MailData;
 
 final class EmailCop extends AdminCop
@@ -35,7 +34,6 @@ final class EmailCop extends AdminCop
 	static final String PATH_INFO = "email.html";
 
 	static final String ADDRESS    = "test.email.address";
-	static final String ATTACHMENT = "test.email.attachment";
 
 	EmailCop()
 	{
@@ -54,14 +52,11 @@ final class EmailCop extends AdminCop
 			try
 			{
 				final MainProperties properties = MainProperties.get();
-				final boolean attachment = request.getParameter(ATTACHMENT)!=null;
 				final MailData mail = new MailData(
 						properties.getMailFrom(),
-						"test mail for cope mxsampler (" + Hostname.get() + ") \u00e4 " + (attachment ? "(a)" : "(na)"));
+						"test mail for cope mxsampler (" + Hostname.get() + ") \u00e4");
 				mail.addTo(address);
 				mail.setTextPlain("test mail for cope mxsampler \u00e4");
-				if(attachment)
-					mail.addAttachment(new ResourceDataSource(AdminServlet.class, AdminServlet.logo));
 				properties.smtp.sendMail(mail);
 			}
 			catch(final MessagingException e)
