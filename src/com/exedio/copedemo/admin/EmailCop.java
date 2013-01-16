@@ -57,9 +57,9 @@ final class EmailCop extends AdminCop
 				final boolean attachment = request.getParameter(ATTACHMENT)!=null;
 				final MailData mail = new MailData(
 						properties.getMailFrom(),
-						"test mail for copedemo (" + Hostname.get() + ") \u00e4 " + (attachment ? "(a)" : "(na)"));
+						"test mail for cope mxsampler (" + Hostname.get() + ") \u00e4 " + (attachment ? "(a)" : "(na)"));
 				mail.addTo(address);
-				mail.setTextPlain("test mail for copedemo \u00e4");
+				mail.setTextPlain("test mail for cope mxsampler \u00e4");
 				if(attachment)
 					mail.addAttachment(new ResourceDataSource(AdminServlet.class, AdminServlet.logo));
 				properties.smtp.sendMail(mail);
