@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>COPE Demo Application</title>
+		<link rel="STYLESHEET" type="text/css" href="src/com/exedio/copedemo/admin/admin.css">
+	</head>
+	<body>
+		<a href="http://cope.sourceforge.net/" target="_blank"><img src="src/com/exedio/copedemo/admin/logo.png" alt="Exedio Logo" class="logo"></a>
+		<h1>COPE Demo Application</h1>
+		<h2>Introduction</h2>
+		<div>
+			This is the demo application for
+			<a href="http://cope.sourceforge.net/" target="_blank">COPE</a>.
+			This application is shall demonstrate the use of the COPE
+			persistence framework within a typical business web application.
+			You may also use it as a template for your own application.
+			The demo application is published under the
+			<a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a>.
+		</div>
+		<h2>Installation</h2>
+		<div>
+			The following step by step procedure deploys the
+			COPE Demo on the
+			<a href="http://tomcat.apache.org/" target="_blank">jakarta tomcat</a>
+			servlet container included in this distribution package.
+		</div>
+		<ol>
+			<li>
+				Configure database:<br>
+				The demo application is already configured to use a
+				<a href="http://hsqldb.org/" target="_blank">hsqldb</a>
+				in-memory database.
+				If this is ok for you,
+				you don't have to do anything in this step.
+				Otherwise adapt the file
+				<tt><a href="project.properties" target="_blank">project.properties</a></tt>
+				to your needs.
+			</li>
+			<li>
+				Build the application:<br>
+				Run <tt>ant tomcat</tt>.
+			</li>
+			<li>
+				Start tomcat:<br>
+				This is done by running
+				<tt>catalina.sh run</tt> in directory <a href="tomcat/bin" target="_blank">tomcat/bin</a>.
+			</li>
+			<li>
+				Open the
+				<a href="http://localhost:8080/copedemo/admin/" target="_blank">Administration Area</a>
+				for the second part of the installation,
+				using login <i>admin</i> and password <i>nimda</i>.
+			</li>
+		</ol>
+		<h2>Links</h2>
+		<ul>
+			<li>
+				<a href="build/api/index.html" target="_blank">API documentation</a>
+				(run <tt>ant api</tt> to build)
+			</li>
+			<li>
+				<a href="build/findbugs.html" target="_blank">FindBugs</a> results.
+				(run <tt>ant findbugs</tt> to build)
+			</li>
+			<li>
+				<a href="doc/Documentation__CopeDemo__exedio.docx" target="_blank">Documentation</a>
+				(<a href="doc/Documentation__CopeDemo__exedio.pdf" target="_blank">pdf</a>)
+			</li>
+			<li>
+				<a href="csrf.html">Test page</a> for Cross Site Request Forgery
+			</li>
+		</ul>
+	</body>
+</html>

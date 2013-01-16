@@ -1,0 +1,11 @@
+
+<Context docBase="../../web"
+			privileged="true"
+			cookies="true" useHttpOnly="true"><!-- TODO ! -->
+	
+	<Parameter
+			name="mxsampler.com.exedio.cope.servletutil.ServletSource.propertiesFile"
+			value="@PROPERTIES@"
+	/>
+	
+</Context>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+	<info
+			organisation="com.exedio"
+			module="copedemo">
+		<license
+				name="The MIT License"
+				url="http://opensource.org/licenses/mit-license.html" />
+	</info>
+	<dependencies>
+		<dependency org="javax.servlet" name="servlet-api" rev="2.4" />
+		<dependency org="org.apache" name="apache-tomcat" rev="7.0.29" />
+		<dependency org="findbugs-x" name="findbugs" rev="2.0.1" />
+		<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3">
+			<exclude org="ant" module="ant" />
+		</dependency>
+		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4" conf="default->default,sources" />
+		<dependency org="com.exedio" name="cope" rev="7432" conf="default->hsqldb,mysql,sources" />
+		<dependency org="com.exedio" name="copeutil" rev="288" />
+		<dependency org="com.exedio" name="copeservletutil" rev="31" />
+		<dependency org="com.exedio" name="jspm" rev="90" />
+		<dependency org="com.exedio" name="copeconsole" rev="6460" />
+		<dependency org="com.exedio" name="cronjob" rev="221" />
+		<dependency org="com.exedio" name="cops" rev="267" />
+		<dependency org="com.exedio" name="sendmail" rev="198" />
+	</dependencies>
+</ivy-module>

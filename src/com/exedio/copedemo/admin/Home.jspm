@@ -1,0 +1,74 @@
+<%
+/*
+ * Copyright (C) 2004-2011  exedio GmbH (www.exedio.com)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+package com.exedio.copedemo.admin;
+
+final class Home_Jspm
+{
+	static final void writeBody(
+			final Out out,
+			final HomeCop cop)
+	{
+		%>
+		<div>
+			All urls linked in this section must be authorized with
+			username <i>admin</i> and password <i>nimda</i>.
+		</div>
+		<ul>
+			<li>
+				<a href="mxSamplerConsole/" target="_blank">COPE Console</a>
+			</li>
+			<li>
+				<a href="cronjob" target="_blank">cronjob</a>
+				administration area
+			</li>
+			<li>
+				<a href="properties/" target="_blank">Application Properties</a>
+			</li>
+			<li>
+				Tests:
+				<a href="<%=cop.toEmail()%>" target="_blank">Email</a>,
+				<a href="<%=cop.toOutOfMemoryError()%>" target="_blank">OutOfMemoryError</a>,
+			</li>
+			<li>
+				tomcat:
+				<a href="/manager/html" target="_blank">manager</a>,
+				<a href="/host-manager/html" target="_blank">host-manager</a>
+			</li>
+			<li>
+				<a href="/probe/" target="_blank">psi-probe</a>:
+				You have to install this separately.
+				Please download the war file from
+				<a href="http://code.google.com/p/psi-probe/" target="_blank">here</a>
+				and put it into <tt>tomcat/webapps</tt>.
+			</li>
+			<li>
+				Cops Resource Status for:
+				<a href="copsResourceStatus.html" target="_blank">Administration Area</a>,
+				<a href="mxSamplerConsole/copsResourceStatus.html" target="_blank">COPE Console</a>,
+				<a href="properties/copsResourceStatus.html" target="_blank">Application Properties</a>,
+			</li>
+		</ul><%
+	}
+}
+%>

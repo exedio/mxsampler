@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<project name="properties" default="fail" basedir=".">
+
+	<macrodef name="echoSubProperties">
+		<attribute name="prefix" />
+		<attribute name="destfile" />
+		<sequential>
+			<echoproperties destfile="@{destfile}">
+				<propertyset>
+					<propertyref prefix="@{prefix}." />
+					<mapper type="glob" from="@{prefix}.*" to="*"/>
+				</propertyset>
+			</echoproperties>
+		</sequential>
+	</macrodef>
+	
+	<target name="fail">
+		<fail message="This file contains helper macros only. There are no targets." />
+	</target>
+
+</project>

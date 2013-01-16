@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+
+<project name="copedemo" default="build" basedir=".">
+
+	<property file="local.properties" />
+	<property file="project.properties" />
+	
+	<import file="macros/compile.xml" />
+	<import file="macros/findbugs.xml" />
+	<import file="macros/properties.xml" />
+	
+	<taskdef resource="com/exedio/jspm/ant.properties" classpath="lib/exedio-jspm.jar" />
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib.jar"/>
+		</classpath>
+	</taskdef>
+
+	<target name="feature.compile">
+		<compile srcdir="featuresrc">
+			<classpath>
+				<path refid="src.lib" />
+				<pathelement location="lib/servlet-api.jar" />
+				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
+				<pathelement location="lib/findbugs-annotations.jar" />
+			</classpath>
+		</compile>
+	</target>
+	
+	<target name="src.jspm">
+		<jspm>
+			<fileset dir="src" includes="**/*.jspm">
+				<exclude name="com/exedio/copedemo/front/cops/Error.jspm" />
+			</fileset>
+		</jspm>
+		<jspm method="append">
+			<fileset dir="src" includes="com/exedio/copedemo/front/cops/Error.jspm" />
+		</jspm>
+	</target>
+	
+	<path id="src.lib">
+		<pathelement location="build/classes/featuresrc" />
+		<pathelement location="lib/exedio-cops.jar" />
+		<pathelement location="lib/exedio-cope.jar" />
+		<pathelement location="lib/exedio-sendmail.jar" />
+		<pathelement location="lib/exedio-cronjob.jar" />
+		<pathelement location="lib/exedio-cope-servletutil.jar" />
+		<pathelement location="lib/slf4j-api.jar" />
+	</path>
+	
+	<path id="runtime.lib">
+		<path refid="src.lib" />
+		<pathelement location="lib/hsqldb.jar" />
+		<pathelement location="lib/mysql-connector-java.jar" />
+	</path>
+	
+
+	
+	<target name="src.compile" depends="feature.compile, src.jspm">
+		<compile srcdir="src">
+			<classpath>
+				<path refid="src.lib" />
+				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
+				<pathelement location="lib/findbugs-annotations.jar" />
+			</classpath>
+		</compile>
+	</target>
+	
+	<target name="web" depends="src.compile">
+		<copy todir="web/WEB-INF/classes">
+			<fileset dir="build/classes/featuresrc" />
+			<fileset dir="build/classes/src" />
+		</copy>
+		<copy todir="web/WEB-INF/lib">
+			<fileset file="lib/exedio-cope.jar" />
+			<fileset file="lib/exedio-cope-console.jar" />
+			<fileset file="lib/exedio-cops.jar" />
+			<fileset file="lib/trove.jar" />
+			<fileset file="lib/exedio-sendmail.jar" />
+			<fileset file="lib/exedio-cope-util.jar" />
+			<fileset file="lib/exedio-cope-servletutil.jar" />
+			<fileset file="lib/mail.jar" />
+			<fileset file="lib/activation.jar" />
+			<fileset file="lib/exedio-cronjob.jar" />
+			<fileset file="lib/hsqldb.jar" />
+			<fileset file="lib/mysql-connector-java.jar" />
+			<fileset file="lib/log4j-bundle.jar" />
+			<fileset file="lib/slf4j-api.jar" />
+			<fileset file="lib/slf4j-log4j12.jar" />
+		</copy>
+		<touch file="web/WEB-INF/web.xml" />
+	</target>
+		
+	<target name="war" depends="web">
+		<copy file="web/WEB-INF/web.xml" tofile="build/web4war.xml" overwrite="true">
+			<filterset>
+				<filter token="BUILD_TAG" value="${build.tag}" />
+			</filterset>
+		</copy>
+		<zip destfile="build/${webapp}.war" filesonly="true" whenempty="fail" duplicate="fail" level="9">
+			<fileset dir="web">
+				<exclude name="WEB-INF/web.xml" />
+			</fileset>
+			<zipfileset dir="build" includes="web4war.xml" fullpath="WEB-INF/web.xml" />
+		</zip>
+	</target>
+		
+	<target name="catalina">
+		<property name="catalina.root" value="apache-tomcat-${tomcat-version}" />
+		<untar src="lib/apache-tomcat.tar.gz"
+				 compression="gzip"
+				 dest="${basedir}">
+			<patternset>
+				<exclude name="${catalina.root}/conf/server.xml" />
+				<exclude name="${catalina.root}/conf/tomcat-users.xml" />
+				<exclude name="${catalina.root}/webapps/ROOT/**" />
+				<exclude name="${catalina.root}/webapps/docs/**" />
+				<exclude name="${catalina.root}/webapps/examples/**" />
+			</patternset>
+			<mapper type="glob" from="${catalina.root}/*" to="tomcat/*" />
+		</untar>
+		<chmod dir="tomcat/bin" perm="ugo+x" includes="*.sh" />
+		<copy todir="tomcat/conf">
+			<fileset dir="conf">
+				<include name="server.xml" />
+				<include name="tomcat-users.xml" />
+				<include name="keystore" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="tomcat" depends="web, catalina">
+		<echoSubProperties prefix="tomcat" destfile="build/tomcat.properties" />
+		<copy file="conf/context.xml" tofile="tomcat/conf/Catalina/localhost/${webapp}.xml" overwrite="true">
+			<filterset>
+				<filter token="PROPERTIES" value="${basedir}/build/tomcat.properties" />
+			</filterset>
+		</copy>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build" />
+		<delete>
+			<fileset dir="src">
+				<include name="**/*_Jspm.java" />
+			</fileset>
+		</delete>
+		<delete dir="src" includes="**/LinkFactory.java" />
+		<delete dir="web/WEB-INF/lib" />
+		<delete dir="web/WEB-INF/classes" />
+		<delete file="web/WEB-INF/cope.properties" /><!-- not created anymore -->
+		<delete dir="web/yaml" /><!-- not created anymore -->
+		<delete dir="tomcat" />
+	</target>
+
+	<target name="api" depends="feature.compile, src">
+
+		<delete dir="build/api" />
+		<mkdir  dir="build/api" />
+
+		<javadoc
+				sourcepath="src"
+				destdir="build/api"
+				maxmemory="100m"
+				private="on"
+				author="on"
+				use="on"
+				version="on"
+				windowtitle="COPE Demo"
+				splitindex="on"
+				failonerror="true"
+			>
+			<doctitle><![CDATA[COPE Demo<br>API Specification]]></doctitle>
+			<header><![CDATA[Demo Application<br>for COPE]]></header>
+			<footer><![CDATA[Cope with<br>Object<br>Persistence]]></footer>
+			<bottom><![CDATA[<small>Copyright &copy; 2004-2011 <a href="http://www.exedio.com/" target="_top">exedio</a> Gesellschaft f&uuml;r Softwareentwicklung mbH. All rights reserved.</small><br><font size="-3">${build.tag}</font>]]></bottom>
+			<package name="com.*" />
+			<classpath>
+				<path refid="src.lib" />
+				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
+				<pathelement location="lib/findbugs-annotations.jar" />
+			</classpath>
+			<tag name="cope.ignore" enabled="true" />
+			<tag name="cope.constructor" enabled="false" />
+			<tag name="cope.generic.constructor" enabled="false" />
+			<tag name="cope.get" enabled="false" />
+			<tag name="cope.set" enabled="false" />
+			<tag name="cope.for" enabled="true" />
+			<tag name="cope.touch" enabled="false" />
+			<tag name="cope.check" enabled="false" />
+			<tag name="cope.checkVerbosely" enabled="false" />
+			<tag name="cope.blind" enabled="false" />
+			<tag name="cope.generated" enabled="true" />
+			<tag name="cope.initial" enabled="true" />
+			<tag name="cope.finder" enabled="true" />
+			<tag name="cope.getURL" enabled="true" />
+			<tag name="cope.setRaw" enabled="true" />
+			<tag name="cope.next" enabled="true" />
+			<tag name="cope.dispatch" enabled="true" />
+		</javadoc>
+	</target>
+	
+	<target name="jspm" depends="src.jspm" />
+	<target name="src" depends="jspm" description="creates all sources, so the IDE does not complain" />
+	<target name="compile" depends="src.compile" />
+	<target name="build" depends="compile, war, api" />
+	
+	
+	<target name="findbugs" depends="compile, findbugs.taskdef">
+		<findbugs
+					home="${basedir}/build/findbugs-home"
+					jvmargs="-Xmx512M"
+					failOnError="true"
+					warningsProperty="findbugs.warnings"
+					output="${findbugs.output}"
+					outputFile="${basedir}/build/findbugs.${findbugs.output}"
+					excludeFilter="conf/findbugs-exclude.xml"
+					effort="max"
+					reportlevel="low">
+			<class location="${basedir}/build/classes/featuresrc" />
+			<class location="${basedir}/build/classes/src" />
+			<auxclasspath>
+				<path refid="src.lib" />
+				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
+				<pathelement location="lib/slf4j-log4j12.jar" />
+				<pathelement location="lib/log4j-bundle.jar" />
+			</auxclasspath>
+		</findbugs>
+	</target>
+	
+	<target name="all" depends="build, findbugs" />
+	
+	<target name="jenkins" depends="all, tomcat">
+		<copy todir="${basedir}/build/success">
+			<fileset dir="${basedir}/build">
+				<include name="${webapp}.war" />
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

@@ -1,0 +1,18 @@
+<FindBugsFilter>
+	<!--
+		Used for global filters only, specific filters are
+		specified by annotation within the source code.
+	-->
+	<Match>
+		<!-- Class names shouldn't shadow simple name of superclass -->
+		<Bug pattern="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" />
+	</Match>
+	<Match>
+		<!-- Class names shouldn't shadow simple name of implemented interface -->
+		<Bug pattern="NM_SAME_SIMPLE_NAME_AS_INTERFACE" />
+	</Match>
+	<Match>
+		<!-- experimental warning without description, that often happens with casts created by generics -->
+		<Bug pattern="BC_UNCONFIRMED_CAST_OF_RETURN_VALUE" />
+	</Match>
+</FindBugsFilter>

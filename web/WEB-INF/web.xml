@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	metadata-complete="true"
+	version="2.4">
+	
+	<!--
+		The flag metadata-complete above disables scanning the classpath for annotations such as
+		javax.servlet.annotation.WebServlet. This significatntly speeds up the server start,
+		but disables the convenience of annotations.
+		Note, that metadata-complete does *not* disable scanning for ServletContainerInitializers.
+		See script checkForServletContainerInitializer.sh.
+	-->
+
+	<display-name>cope mxsampler @BUILD_TAG@</display-name>
+	
+	<listener>
+		<listener-class>com.exedio.copedemo.front.PropertiesInitializer</listener-class>
+	</listener>
+	
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>cope mxsampler by exedio</realm-name>
+	</login-config>
+	
+	<security-role><role-name>manager</role-name></security-role>
+	<security-constraint>
+		<web-resource-collection><web-resource-name/><url-pattern>/*</url-pattern></web-resource-collection>
+		<auth-constraint><role-name>manager</role-name></auth-constraint>
+		<user-data-constraint><transport-guarantee>CONFIDENTIAL</transport-guarantee></user-data-constraint>
+	</security-constraint>
+	
+	<servlet>
+		<servlet-name>admin</servlet-name>
+		<servlet-class>com.exedio.copedemo.admin.AdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admin</servlet-name>
+		<url-pattern>/admin/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>properties</servlet-name>
+		<servlet-class>com.exedio.copedemo.admin.PropertiesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>properties</servlet-name>
+		<url-pattern>/admin/properties/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>cronjob</servlet-name>
+		<servlet-class>com.exedio.cronjob.CronjobManager</servlet-class>
+		<init-param>
+			<param-name>store</param-name>
+			<param-value>com.exedio.copedemo.cronjob.Store</param-value>
+		</init-param>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cronjob</servlet-name>
+		<url-pattern>/admin/cronjob/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>mxSamplerConsole</servlet-name>
+		<servlet-class>com.exedio.cope.console.ConsoleServlet</servlet-class>
+		<init-param>
+			<param-name>model</param-name>
+			<param-value>com.exedio.copedemo.cronjob.MxSamplerJob#model</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mxSamplerConsole</servlet-name>
+		<url-pattern>/admin/mxSamplerConsole/*</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>admin-csrf</filter-name>
+		<filter-class>com.exedio.copedemo.admin.csrf.StrictRefererValidationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>admin-csrf</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
+	<session-config>
+		<session-timeout>30<!--minutes--></session-timeout>
+	</session-config>
+
+</web-app>
