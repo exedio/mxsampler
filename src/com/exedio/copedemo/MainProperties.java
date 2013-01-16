@@ -109,7 +109,7 @@ public final class MainProperties extends MyProperties
 	}
 
 
-	public final String adminRefererPrefix = value("admin.refererPrefix", "https://localhost:8443" + contextPath + "/admin/");
+	public final String adminRefererPrefix = value("admin.refererPrefix", "https://localhost:8443" + contextPath + "/");
 
 
 	// common code
