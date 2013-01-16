@@ -38,7 +38,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>admin</servlet-name>
-		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>properties</servlet-name>
@@ -46,7 +46,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>properties</servlet-name>
-		<url-pattern>/admin/properties/*</url-pattern>
+		<url-pattern>/properties/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>cronjob</servlet-name>
@@ -59,7 +59,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>cronjob</servlet-name>
-		<url-pattern>/admin/cronjob/*</url-pattern>
+		<url-pattern>/cronjob/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>mxSamplerConsole</servlet-name>
@@ -71,7 +71,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mxSamplerConsole</servlet-name>
-		<url-pattern>/admin/mxSamplerConsole/*</url-pattern>
+		<url-pattern>/mxSamplerConsole/*</url-pattern>
 	</servlet-mapping>
 	<filter>
 		<filter-name>admin-csrf</filter-name>
@@ -79,7 +79,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>admin-csrf</filter-name>
-		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
 	<session-config>
