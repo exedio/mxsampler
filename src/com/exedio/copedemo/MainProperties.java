@@ -55,16 +55,10 @@ public final class MainProperties extends MyProperties
 	// mail
 
 	private final String mailFrom = value("mail.from", (String)null);
-	private final String mailBcc  = value("mail.bcc",  (String)null);
 
 	public String getMailFrom()
 	{
 		return mailFrom;
-	}
-
-	public String getMailBcc()
-	{
-		return mailBcc;
 	}
 
 
