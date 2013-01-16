@@ -52,15 +52,10 @@ abstract class AbstractJob implements Job
 		// empty
 	}
 
-	boolean isActiveOnSlaves()
-	{
-		return false;
-	}
-
 	@Override
-	public boolean isActiveInitially()
+	public final boolean isActiveInitially()
 	{
-		return MainProperties.get().master || isActiveOnSlaves();
+		return true;
 	}
 
 	@Override

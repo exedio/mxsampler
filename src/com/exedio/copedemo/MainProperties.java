@@ -39,8 +39,6 @@ import com.exedio.sendmail.MailSender;
 
 public final class MainProperties extends MyProperties
 {
-	public final boolean master = value("master", false);
-
 	/**
 	 * This field relies on
 	 * {@link com.exedio.cope.servletutil.ServletProperties#create(javax.servlet.ServletContext)},

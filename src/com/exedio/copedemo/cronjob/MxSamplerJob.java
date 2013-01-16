@@ -25,7 +25,6 @@ package com.exedio.copedemo.cronjob;
 import com.exedio.cope.Model;
 import com.exedio.cope.misc.ConnectToken;
 import com.exedio.cope.mxsampler.MxSampler;
-import com.exedio.copedemo.MainProperties;
 
 /**
  * Must be public to allow access to field model by reflection.
@@ -66,11 +65,5 @@ public abstract class MxSamplerJob extends AbstractJob
 		}
 
 		super.destroy();
-	}
-
-	@Override
-	public final boolean isActiveInitially()
-	{
-		return MainProperties.get().mxSampler!=null;
 	}
 }

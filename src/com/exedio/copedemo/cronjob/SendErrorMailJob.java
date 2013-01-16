@@ -35,12 +35,6 @@ final class SendErrorMailJob extends AbstractJob
 	}
 
 	@Override
-	boolean isActiveOnSlaves()
-	{
-		return true;
-	}
-
-	@Override
 	public int getMinutesBetweenExecutions()
 	{
 		return 1;
