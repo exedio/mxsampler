@@ -16,10 +16,8 @@
 	<role rolename="manager-status" description="Tomcat Web Application Manager - allows access to the status pages only" />
 	<role rolename="admin-gui"      description="Tomcat Virtual Host Manager - allows access to the HTML GUI" />
 	<role rolename="admin-script"   description="Tomcat Virtual Host Manager - allows access to the text interface" />
-	<role rolename="appadmin"       description="Administration Area" />
-	<role rolename="appadminGet"    description="Administration Area (get only)" />
 	<user username="admin"
 			fullName="Admin Administrator"
 			password="nimda"
-			roles="manager,manager-gui,admin-gui,appadmin" />
+			roles="manager,manager-gui,admin-gui" />
 </tomcat-users>
