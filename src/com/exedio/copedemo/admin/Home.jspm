@@ -36,7 +36,7 @@ final class Home_Jspm
 		</div>
 		<ul>
 			<li>
-				<a href="mxSamplerConsole/" target="_blank">COPE Console</a>
+				<a href="console/" target="_blank">COPE Console</a>
 			</li>
 			<li>
 				<a href="cronjob" target="_blank">cronjob</a>
@@ -65,7 +65,7 @@ final class Home_Jspm
 			<li>
 				Cops Resource Status for:
 				<a href="copsResourceStatus.html" target="_blank">Administration Area</a>,
-				<a href="mxSamplerConsole/copsResourceStatus.html" target="_blank">COPE Console</a>,
+				<a href="console/copsResourceStatus.html" target="_blank">COPE Console</a>,
 				<a href="properties/copsResourceStatus.html" target="_blank">Application Properties</a>,
 			</li>
 		</ul><%
