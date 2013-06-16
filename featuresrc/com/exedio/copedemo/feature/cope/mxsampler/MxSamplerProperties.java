@@ -27,10 +27,10 @@ import com.exedio.cope.Model;
 import com.exedio.cope.misc.ConnectToken;
 import com.exedio.cope.mxsampler.MxSampler;
 import com.exedio.cope.util.JobContext;
+import com.exedio.cope.util.Properties;
 import com.exedio.copedemo.feature.cope.ConnectPropertiesFactory;
-import com.exedio.copedemo.feature.util.MyProperties;
 
-public final class MxSamplerProperties extends MyProperties
+public final class MxSamplerProperties extends Properties
 {
 	// cope
 

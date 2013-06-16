@@ -22,10 +22,10 @@
 
 package com.exedio.copedemo.feature.sendmail;
 
-import com.exedio.copedemo.feature.util.MyProperties;
+import com.exedio.cope.util.Properties;
 import com.exedio.sendmail.MailSender;
 
-public final class MailSenderProperties extends MyProperties
+public final class MailSenderProperties extends Properties
 {
 	private final String host = value("host", (String)null);
 	private final int port = value("port", 25, 0);
@@ -65,7 +65,7 @@ public final class MailSenderProperties extends MyProperties
 		super(source);
 	}
 
-	private static final class Auth extends MyProperties
+	private static final class Auth extends Properties
 	{
 		private final String username = value      ("username", (String)null);
 		private final String password = valueHidden("password", (String)null);
