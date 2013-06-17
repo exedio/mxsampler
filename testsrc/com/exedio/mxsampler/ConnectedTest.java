@@ -23,17 +23,16 @@ import static com.exedio.mxsampler.Stuff.samplerModel;
 import java.io.File;
 
 import com.exedio.cope.ConnectProperties;
-import com.exedio.cope.junit.CopeTest;
+import com.exedio.cope.junit.CopeModelTest;
 import com.exedio.cope.util.Properties.Source;
 import com.exedio.cope.util.Sources;
 import com.exedio.copedemo.MainProperties;
 
-public class ConnectedTest extends CopeTest
+public class ConnectedTest extends CopeModelTest
 {
 	ConnectedTest()
 	{
-		super(samplerModel, true);
-		skipTransactionManagement();
+		super(samplerModel);
 	}
 
 	@Override
@@ -53,5 +52,11 @@ public class ConnectedTest extends CopeTest
 		if(filename==null)
 			filename = "test.properties";
 		return Sources.load(new File(filename));
+	}
+
+	@Override
+	protected boolean doesManageTransactions()
+	{
+		return false;
 	}
 }
