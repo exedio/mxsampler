@@ -67,6 +67,47 @@
 		</compile>
 	</target>
 	
+	<target name="testsrc.compile" depends="src.compile">
+		<compile srcdir="testsrc">
+			<classpath>
+				<pathelement location="build/classes/src" />
+				<path refid="src.lib" />
+				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
+				<pathelement location="lib/exedio-cope-junit.jar" />
+				<pathelement location="lib/findbugs-annotations.jar" />
+				<pathelement location="lib/junit.jar" />
+			</classpath>
+		</compile>
+	</target>
+	
+	<target name="test.properties">
+		<echoSubProperties prefix="test" destfile="build/test.properties" />
+	</target>
+	
+	<target name="test" depends="testsrc.compile, test.properties">
+		<echo message="Using ${test.cope.connection.url} ${test.cope.connection.username}" />
+		<mkdir dir="build/testresults" />
+		<mkdir dir="build/testtmpdir" />
+		<junit fork="yes" dir="${basedir}"
+				 haltonerror="true" haltonfailure="true"
+				 showoutput="true" printsummary="true">
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<classpath>
+				<pathelement location="build/classes/src" />
+				<pathelement location="build/classes/testsrc" />
+				<path refid="runtime.lib" />
+				<fileset file="lib/exedio-cope-junit.jar" />
+				<fileset file="lib/junit.jar" />
+			</classpath>
+			<test name="${test}" todir="build/testresults" outfile="copedemo" />
+			<sysproperty key="java.io.tmpdir" value="${basedir}/build/testtmpdir" />
+			<sysproperty key="java.awt.headless" value="true" />
+			<sysproperty key="com.exedio.copedemo.properties" value="build/test.properties" />
+			<assertions><enable/></assertions>
+		</junit>
+	</target>
+	
 	<target name="web" depends="src.compile">
 		<copy todir="web/WEB-INF/classes">
 			<fileset dir="build/classes/featuresrc" />
@@ -203,8 +244,8 @@
 	
 	<target name="jspm" depends="src.jspm" />
 	<target name="src" depends="jspm" description="creates all sources, so the IDE does not complain" />
-	<target name="compile" depends="src.compile" />
-	<target name="build" depends="compile, war, api" />
+	<target name="compile" depends="src.compile, testsrc.compile" />
+	<target name="build" depends="compile, test, war, api" />
 	
 	
 	<target name="findbugs" depends="compile, findbugs.taskdef">
@@ -220,11 +261,13 @@
 					reportlevel="low">
 			<class location="${basedir}/build/classes/featuresrc" />
 			<class location="${basedir}/build/classes/src" />
+			<class location="${basedir}/build/classes/testsrc" />
 			<auxclasspath>
 				<path refid="src.lib" />
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
 				<pathelement location="lib/slf4j-log4j12.jar" />
 				<pathelement location="lib/log4j-bundle.jar" />
+				<pathelement location="${basedir}/lib/junit.jar" />
 			</auxclasspath>
 		</findbugs>
 	</target>

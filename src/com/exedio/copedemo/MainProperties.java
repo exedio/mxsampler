@@ -29,10 +29,10 @@ import java.util.concurrent.Callable;
 import javax.mail.MessagingException;
 
 import com.exedio.cope.util.Properties;
-import com.exedio.copedemo.feature.cope.mxsampler.MxSamplerProperties;
 import com.exedio.copedemo.feature.sendmail.MailSenderProperties;
 import com.exedio.copedemo.feature.util.PropertiesInstance;
 import com.exedio.copedemo.misc.Hostname;
+import com.exedio.mxsampler.MxSamplerProperties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.MailData;
 import com.exedio.sendmail.MailSender;

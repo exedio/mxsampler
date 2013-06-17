@@ -20,12 +20,12 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package com.exedio.copedemo.feature.cope.mxsampler;
+package com.exedio.mxsampler;
 
 import com.exedio.cope.ConnectProperties;
 import com.exedio.cope.Model;
 import com.exedio.cope.misc.ConnectToken;
-import com.exedio.cope.mxsampler.MxSampler;
+import com.exedio.mxsampler.MxSampler;
 import com.exedio.cope.util.JobContext;
 import com.exedio.cope.util.Properties;
 import com.exedio.copedemo.feature.cope.ConnectPropertiesFactory;
@@ -47,6 +47,12 @@ public final class MxSamplerProperties extends Properties
 				return original.create(MxSampler.maskConnectSource(source));
 			}
 		};
+	}
+
+	// TODO remove, used for tests only
+	ConnectProperties getCope()
+	{
+		return cope;
 	}
 
 	public void setProperties(final Model model)
