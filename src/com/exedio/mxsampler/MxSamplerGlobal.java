@@ -71,7 +71,6 @@ final class MxSamplerGlobal extends Item
 	}
 
 
-	@SuppressWarnings("unused")
 	private MxSamplerGlobal(final ActivationParameters ap)
 	{
 		super(ap);
