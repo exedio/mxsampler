@@ -17,7 +17,7 @@
 			<exclude org="ant" module="ant" />
 		</dependency>
 		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4" conf="default->default,sources" />
-		<dependency org="com.exedio" name="cope" rev="7595" conf="default->hsqldb,mysql,sources" />
+		<dependency org="com.exedio" name="cope" rev="7604" conf="default->hsqldb,mysql,sources" />
 		<dependency org="com.exedio" name="copeutil" rev="288" />
 		<dependency org="com.exedio" name="copeservletutil" rev="31" />
 		<dependency org="com.exedio" name="jspm" rev="90" />
