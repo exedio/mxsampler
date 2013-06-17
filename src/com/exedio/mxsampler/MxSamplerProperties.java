@@ -25,16 +25,14 @@ package com.exedio.mxsampler;
 import com.exedio.cope.ConnectProperties;
 import com.exedio.cope.Model;
 import com.exedio.cope.misc.ConnectToken;
-import com.exedio.mxsampler.MxSampler;
 import com.exedio.cope.util.JobContext;
 import com.exedio.cope.util.Properties;
-import com.exedio.copedemo.feature.cope.ConnectPropertiesFactory;
 
 public final class MxSamplerProperties extends Properties
 {
 	// cope
 
-	private final ConnectProperties cope = value("cope", mask(ConnectPropertiesFactory.factory()));
+	private final ConnectProperties cope = value("cope", mask(ConnectProperties.factory()));
 
 	private static Factory<ConnectProperties> mask(final Factory<ConnectProperties> original)
 	{
