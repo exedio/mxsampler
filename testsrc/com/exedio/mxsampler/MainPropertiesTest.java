@@ -22,8 +22,6 @@
 
 package com.exedio.mxsampler;
 
-import org.junit.Test;
-
 import com.exedio.cope.junit.CopeAssert;
 import com.exedio.cope.util.Properties.Field;
 import com.exedio.cope.util.Sources;
@@ -35,7 +33,7 @@ import com.exedio.copedemo.MainProperties;
  */
 public final class MainPropertiesTest extends CopeAssert
 {
-	@Test public void testIt()
+	public void testIt()
 	{
 		final MainProperties p = MainProperties.factory().create(
 				Sources.load(getClass().getResource("mainPropertiesTest.properties")));
