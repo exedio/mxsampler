@@ -32,6 +32,7 @@ import com.exedio.cope.util.Properties;
 import com.exedio.copedemo.feature.sendmail.MailSenderProperties;
 import com.exedio.copedemo.feature.util.PropertiesInstance;
 import com.exedio.copedemo.misc.Hostname;
+import com.exedio.mxsampler.MemoryUsageLimit;
 import com.exedio.mxsampler.MxSamplerProperties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.MailData;
@@ -70,6 +71,29 @@ public final class MainProperties extends Properties
 				errorMailTo,
 				errorMailTo,
 				"copedemo error (" + Hostname.get() + ')');
+
+
+	// limit
+
+	public final MemoryUsageLimit limitOld  = value("limit.old",  true, MemoryUsageLimit.factory("PS Old Gen" ));
+	public final MemoryUsageLimit limitPerm = value("limit.perm", true, MemoryUsageLimit.factory("PS Perm Gen"));
+
+	private Callable<?> getLimitOldTest () { return getLimitTest(limitOld , "limit.old" ); }
+	private Callable<?> getLimitPermTest() { return getLimitTest(limitPerm, "limit.perm"); }
+
+	private Callable<?> getLimitTest(final MemoryUsageLimit limit, final String key)
+	{
+		return new Callable<String>(){
+			@Override public String call()
+			{
+				return limit!=null ? limit.test() : "disabled";
+			}
+			@Override public String toString()
+			{
+				return key;
+			}
+		};
+	}
 
 
 	// smtp
@@ -127,6 +151,8 @@ public final class MainProperties extends Properties
 	public List<? extends Callable<?>> getTests()
 	{
 		return Arrays.<Callable<?>>asList(
+				getLimitOldTest(),
+				getLimitPermTest(),
 				getSmtpTest());
 	}
 

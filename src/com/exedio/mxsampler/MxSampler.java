@@ -40,6 +40,7 @@ import com.exedio.cope.Type;
 import com.exedio.cope.misc.ConnectToken;
 import com.exedio.cope.util.JobContext;
 import com.exedio.cope.util.Properties;
+import com.exedio.copedemo.MainProperties;
 
 public class MxSampler
 {
@@ -146,6 +147,7 @@ public class MxSampler
 	MxSamplerGlobal sampleInternal()
 	{
 		// prepare
+		final MainProperties properties = MainProperties.get();
 		final HashMap<MemoryPoolMXBean, MemoryUsage> memoryUsage = new HashMap<MemoryPoolMXBean, MemoryUsage>();
 		final HashMap<MemoryPoolMXBean, MemoryUsage> memoryCollectionUsage = new HashMap<MemoryPoolMXBean, MemoryUsage>();
 
@@ -210,11 +212,24 @@ public class MxSampler
 			for(final Map.Entry<MemoryPoolMXBean, MemoryUsage> entry : memoryUsage.entrySet())
 			{
 				final MemoryPoolMXBean pool = entry.getKey();
+				final MemoryUsage collectionUsage = memoryCollectionUsage.get(pool);
+
+				{
+					final MemoryUsageLimit limit = properties.limitOld;
+					if(limit!=null)
+						limit.check(pool, collectionUsage, properties.errorMailSource);
+				}
+				{
+					final MemoryUsageLimit limit = properties.limitPerm;
+					if(limit!=null)
+						limit.check(pool, collectionUsage, properties.errorMailSource);
+				}
+
 				sv.clear();
 				sv.addAll(MxSamplerMemoryPool.map(model));
 				sv.add(MxSamplerMemoryPool.name.map(MxSamplerMemoryPoolName.get(pool)));
 				sv.add(MxSamplerMemoryPool.usage.map(MxSamplerMemoryUsage.create(entry.getValue())));
-				sv.add(MxSamplerMemoryPool.collectionUsage.map(MxSamplerMemoryUsage.create(memoryCollectionUsage.get(pool))));
+				sv.add(MxSamplerMemoryPool.collectionUsage.map(MxSamplerMemoryUsage.create(collectionUsage)));
 				MxSamplerMemoryPool.TYPE.newItem(sv);
 			}
 			samplerModel.commit();

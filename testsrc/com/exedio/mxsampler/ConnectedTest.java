@@ -36,6 +36,20 @@ public class ConnectedTest extends CopeModelTest
 	}
 
 	@Override
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+		MainProperties.instance.set(getMainProperties());
+	}
+
+	@Override
+	protected void tearDown() throws Exception
+	{
+		MainProperties.instance.remove();
+		super.tearDown();
+	}
+
+	@Override
 	public ConnectProperties getConnectProperties()
 	{
 		return getMainProperties().mxSampler.getCope();

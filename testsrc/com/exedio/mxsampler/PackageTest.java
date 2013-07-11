@@ -28,6 +28,7 @@ public class PackageTest extends TestCase
 	{
 		final TestSuite suite = new TestSuite();
 		suite.addTestSuite(SampleTest.class);
+		suite.addTestSuite(MemoryUsageLimitTest.class);
 		suite.addTestSuite(MainPropertiesTest.class);
 		return suite;
 	}
