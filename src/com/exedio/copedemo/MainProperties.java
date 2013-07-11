@@ -38,6 +38,8 @@ import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.MailData;
 import com.exedio.sendmail.MailSender;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 public final class MainProperties extends Properties
 {
 	/**
@@ -81,6 +83,7 @@ public final class MainProperties extends Properties
 	private Callable<?> getLimitOldTest () { return getLimitTest(limitOld , "limit.old" ); }
 	private Callable<?> getLimitPermTest() { return getLimitTest(limitPerm, "limit.perm"); }
 
+	@SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC_ANON")
 	private Callable<?> getLimitTest(final MemoryUsageLimit limit, final String key)
 	{
 		return new Callable<String>(){

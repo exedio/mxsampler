@@ -29,6 +29,8 @@ import com.exedio.cope.util.Properties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.Mail;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 public final class MemoryUsageLimitTest extends ConnectedTest
 {
 	public void testExceeds()
@@ -132,6 +134,7 @@ public final class MemoryUsageLimitTest extends ConnectedTest
 		}
 	}
 
+	@SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC_ANON")
 	private Properties.Source source(final int ratioPercent)
 	{
 		return new Properties.Source(){
