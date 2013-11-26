@@ -61,7 +61,7 @@ public final class MxSamplerProperties extends Properties
 
 	// purge
 
-	private final int purgeDays = value("purgeDays", 7, 0);
+	private final int purgeDays = value("purgeDays", 8, 0); // amply one week
 
 	public void purge(final MxSampler sampler, final JobContext ctx)
 	{
