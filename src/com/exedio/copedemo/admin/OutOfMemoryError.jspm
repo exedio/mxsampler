@@ -36,10 +36,10 @@ final class OutOfMemoryError_Jspm
 		%>
 		<h2>OutOfMemoryError</h2>
 		<form method="post">
-			<input type="submit" name="<%= LOG_OUT %>" value="Log to System.out"></input>
-			<input type="submit" name="<%= LOG_ERR %>" value="Log to System.err"></input>
-			<input type="submit" name="<%= THROW   %>" value="throw new OutOfMemoryError"></input>
-			<input type="submit" name="<%= ALLOCATE%>" value="allocate array"></input>
+			<input type="submit" name="<%= LOG_OUT %>" value="Log to System.out"      onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
+			<input type="submit" name="<%= LOG_ERR %>" value="Log to System.err"      onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
+			<input type="submit" name="<%= THROW   %>" value="throw OutOfMemoryError" onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
+			<input type="submit" name="<%= ALLOCATE%>" value="allocate array"         onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
 		</form><%
 	}
 }
