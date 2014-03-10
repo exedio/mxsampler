@@ -27,11 +27,15 @@ import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.LOG_OUT;
 import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.LOG_ERR;
 import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.THROW;
 import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE;
+import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_CLEAR;
+import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_NUMBER;
+import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_SIZE;
 
 final class OutOfMemoryError_Jspm
 {
 	static final void writeBody(
-			final Out out)
+			final Out out,
+			final int currentNumber)
 	{
 		%>
 		<h2>OutOfMemoryError</h2>
@@ -39,7 +43,16 @@ final class OutOfMemoryError_Jspm
 			<input type="submit" name="<%= LOG_OUT %>" value="Log to System.out"      onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
 			<input type="submit" name="<%= LOG_ERR %>" value="Log to System.err"      onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
 			<input type="submit" name="<%= THROW   %>" value="throw OutOfMemoryError" onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
-			<input type="submit" name="<%= ALLOCATE%>" value="allocate array"         onclick="return confirm('This operation may cause your application server to be restarted.\nDo you really want to do this?')"></input>
+			<hr>
+			<table>
+				<caption>allocate arrays</caption>
+				<tr><th>Size  </th><td><input name="<%= ALLOCATE_SIZE   %>" value="1000" size="10"></input></td></tr>
+				<tr><th>Number</th><td><input name="<%= ALLOCATE_NUMBER %>" value="1000" size="10"></input> (currently <%=currentNumber%>)</td></tr>
+				<tr><td colspan="2">
+					<input type="submit" name="<%= ALLOCATE       %>" value="allocate" onclick="return confirm('This operation will probably cause your application server to be restarted.\nDo you really want to do this?')"></input>
+					<input type="submit" name="<%= ALLOCATE_CLEAR %>" value="clear"></input>
+				</td></tr>
+			</table>
 		</form><%
 	}
 }

@@ -22,6 +22,9 @@
 
 package com.exedio.copedemo.admin;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 final class OutOfMemoryErrorCop extends AdminCop
@@ -31,12 +34,18 @@ final class OutOfMemoryErrorCop extends AdminCop
 	static final String LOG_OUT  = "logOut";
 	static final String LOG_ERR  = "logErr";
 	static final String THROW    = "throw";
-	static final String ALLOCATE = "allocate";
+	static final String ALLOCATE_SIZE   = "allocate.size";
+	static final String ALLOCATE_NUMBER = "allocate.number";
+	static final String ALLOCATE        = "allocate";
+	static final String ALLOCATE_CLEAR  = "allocate.clear";
 
 	OutOfMemoryErrorCop()
 	{
 		super(PATH_INFO);
 	}
+
+	private static final List<double[]> memoryLeak =
+			Collections.synchronizedList(new ArrayList<double[]>());
 
 	@Override
 	protected void post(
@@ -50,14 +59,24 @@ final class OutOfMemoryErrorCop extends AdminCop
 			throw new OutOfMemoryError();
 		if(request.getParameter(ALLOCATE)!=null)
 		{
-			final double[] b = new double[Integer.MAX_VALUE];
-			System.out.println("Allocated " + b.length + " doubles.");
+			final int size   = getIntParameter(request, ALLOCATE_SIZE  , 0);
+			final int number = getIntParameter(request, ALLOCATE_NUMBER, 0);
+			System.out.println("mxsampler: Allocating double[" + size + "] times " + number + '.');
+			for(int i = 0; i<number; i++)
+				memoryLeak.add(new double[size]);
+			System.out.println("mxsampler: Allocated  double[" + size + "] times " + number + '.');
+		}
+		if(request.getParameter(ALLOCATE_CLEAR)!=null)
+		{
+			System.out.println("mxsampler: Clearing " + memoryLeak.size() + " entries.");
+			memoryLeak.clear();
+			System.out.println("mxsampler: Cleared.");
 		}
 	}
 
 	@Override
 	void writeBody(final Out out, final HttpServletRequest request)
 	{
-		OutOfMemoryError_Jspm.writeBody(out);
+		OutOfMemoryError_Jspm.writeBody(out, memoryLeak.size());
 	}
 }

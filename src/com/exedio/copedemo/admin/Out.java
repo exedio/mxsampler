@@ -54,6 +54,11 @@ final class Out
 		XMLEncoder.append(bf, s);
 	}
 
+	void write(final int i)
+	{
+		bf.append(i);
+	}
+
 	void write(final Resource resource)
 	{
 		bf.append(resource.getURL(request)); // resource urls do not contain special xml characters
