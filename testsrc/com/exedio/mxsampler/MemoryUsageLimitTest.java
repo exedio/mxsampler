@@ -22,14 +22,12 @@
 
 package com.exedio.mxsampler;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import com.exedio.cope.util.Properties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.Mail;
-
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.Collection;
+import java.util.Iterator;
 
 public final class MemoryUsageLimitTest extends ConnectedTest
 {

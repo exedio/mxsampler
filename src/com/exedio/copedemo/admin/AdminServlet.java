@@ -22,14 +22,12 @@
 
 package com.exedio.copedemo.admin;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.exedio.cops.Cop;
 import com.exedio.cops.CopsServlet;
 import com.exedio.cops.Resource;
+import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public final class AdminServlet extends CopsServlet
 {

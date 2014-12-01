@@ -25,9 +25,7 @@ package com.exedio.mxsampler;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryType;
 import java.lang.management.MemoryUsage;
-
 import javax.management.ObjectName;
-
 import junit.framework.AssertionFailedError;
 
 class AssertionFailedMemoryPoolMXBean implements MemoryPoolMXBean

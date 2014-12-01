@@ -20,13 +20,12 @@ package com.exedio.mxsampler;
 
 import static com.exedio.mxsampler.Stuff.samplerModel;
 
-import java.io.File;
-
 import com.exedio.cope.ConnectProperties;
 import com.exedio.cope.junit.CopeModelTest;
 import com.exedio.cope.util.Properties.Source;
 import com.exedio.cope.util.Sources;
 import com.exedio.copedemo.MainProperties;
+import java.io.File;
 
 public class ConnectedTest extends CopeModelTest
 {

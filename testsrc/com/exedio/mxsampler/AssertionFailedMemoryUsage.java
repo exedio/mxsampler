@@ -23,7 +23,6 @@
 package com.exedio.mxsampler;
 
 import java.lang.management.MemoryUsage;
-
 import junit.framework.AssertionFailedError;
 
 class AssertionFailedMemoryUsage extends MemoryUsage

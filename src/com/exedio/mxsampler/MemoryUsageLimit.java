@@ -22,12 +22,11 @@
 
 package com.exedio.mxsampler;
 
+import com.exedio.cope.util.Properties;
+import com.exedio.sendmail.ErrorMailSource;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
-
-import com.exedio.cope.util.Properties;
-import com.exedio.sendmail.ErrorMailSource;
 
 public final class MemoryUsageLimit extends Properties
 {

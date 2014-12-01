@@ -22,11 +22,13 @@
 
 package com.exedio.copedemo.admin.csrf;
 
+import com.exedio.copedemo.MainProperties;
+import com.exedio.cops.Cop;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -35,11 +37,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.exedio.copedemo.MainProperties;
-import com.exedio.cops.Cop;
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public final class StrictRefererValidationFilter implements Filter
 {

@@ -22,12 +22,11 @@
 
 package com.exedio.copedemo.admin;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-
 import com.exedio.copedemo.MainProperties;
 import com.exedio.copedemo.misc.Hostname;
 import com.exedio.sendmail.MailData;
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 final class EmailCop extends AdminCop
 {

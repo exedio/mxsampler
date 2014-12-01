@@ -24,14 +24,13 @@ package com.exedio.copedemo.front;
 
 import static com.exedio.cope.misc.ConnectToken.removeProperties;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-
 import com.exedio.cope.servletutil.ServletSource;
 import com.exedio.copedemo.Main;
 import com.exedio.copedemo.MainProperties;
 import com.exedio.copedemo.cronjob.MxSamplerJob;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 public final class PropertiesInitializer implements ServletContextListener
 {

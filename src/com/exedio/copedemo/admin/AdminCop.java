@@ -22,9 +22,8 @@
 
 package com.exedio.copedemo.admin;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.exedio.cops.Cop;
+import javax.servlet.http.HttpServletRequest;
 
 abstract class AdminCop extends Cop
 {
