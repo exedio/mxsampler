@@ -20,7 +20,7 @@
 			<exclude org="org.hamcrest" module="hamcrest-core" />
 		</dependency>
 		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4" conf="default->default,sources" />
-		<dependency org="com.exedio" name="cope" rev="7604" conf="default->hsqldb,mysql,junit,sources" />
+		<dependency org="com.exedio" name="cope" rev="7661" conf="default->hsqldb,mysql,junit,sources" />
 		<dependency org="com.exedio" name="copeutil" rev="312" />
 		<dependency org="com.exedio" name="copeservletutil" rev="31" />
 		<dependency org="com.exedio" name="jspm" rev="90" />
