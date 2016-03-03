@@ -27,7 +27,8 @@ final class Home_Jspm
 {
 	static final void writeBody(
 			final Out out,
-			final HomeCop cop)
+			final HomeCop cop,
+			final String contextPath)
 	{
 		%>
 		<div>
@@ -36,14 +37,14 @@ final class Home_Jspm
 		</div>
 		<ul>
 			<li>
-				<a href="console/" target="_blank">COPE Console</a>
+				<a href="<%=contextPath%>/console/" target="_blank">COPE Console</a>
 			</li>
 			<li>
-				<a href="cronjob" target="_blank">cronjob</a>
+				<a href="<%=contextPath%>/cronjob" target="_blank">cronjob</a>
 				administration area
 			</li>
 			<li>
-				<a href="properties/" target="_blank">Application Properties</a>
+				<a href="<%=contextPath%>/properties/" target="_blank">Application Properties</a>
 			</li>
 			<li>
 				Tests:
@@ -64,9 +65,9 @@ final class Home_Jspm
 			</li>
 			<li>
 				Cops Resource Status for:
-				<a href="copsResourceStatus.html" target="_blank">Administration Area</a>,
-				<a href="console/copsResourceStatus.html" target="_blank">COPE Console</a>,
-				<a href="properties/copsResourceStatus.html" target="_blank">Application Properties</a>,
+				<a href="<%=contextPath%>/copsResourceStatus.html" target="_blank">Administration Area</a>,
+				<a href="<%=contextPath%>/console/copsResourceStatus.html" target="_blank">COPE Console</a>,
+				<a href="<%=contextPath%>/properties/copsResourceStatus.html" target="_blank">Application Properties</a>,
 			</li>
 		</ul><%
 	}

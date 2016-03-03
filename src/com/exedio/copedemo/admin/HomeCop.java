@@ -54,6 +54,6 @@ final class HomeCop extends AdminCop
 	void writeBody(final Out out, final HttpServletRequest request)
 	{
 		Home_Jspm.writeBody(
-				out, this);
+				out, this, request.getContextPath());
 	}
 }
