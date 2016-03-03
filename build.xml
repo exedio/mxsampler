@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="copedemo" default="build" basedir=".">
+<project name="mxsampler" default="build" basedir=".">
 
 	<property file="local.properties" />
 	<property file="project.properties" />
