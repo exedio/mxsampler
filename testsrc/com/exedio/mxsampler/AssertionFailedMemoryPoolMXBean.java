@@ -30,7 +30,7 @@ import junit.framework.AssertionFailedError;
 
 class AssertionFailedMemoryPoolMXBean implements MemoryPoolMXBean
 {
-	// exists in JDK 1.7 only
+	@Override
 	public ObjectName getObjectName()
 	{
 		throw new AssertionFailedError();
