@@ -4,15 +4,15 @@
 
 	<property file="local.properties" />
 	<property file="project.properties" />
-	
+
 	<import>
 		<fileset dir="macros">
 			<include name="*.xml" />
 		</fileset>
 	</import>
-	
+
 	<taskdef resource="com/exedio/jspm/ant.properties" classpath="lib/exedio-jspm.jar" />
-	
+
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="lib/ant-contrib.jar"/>
@@ -29,7 +29,7 @@
 			</classpath>
 		</compile>
 	</target>
-	
+
 	<target name="src.jspm">
 		<jspm>
 			<fileset dir="src" includes="**/*.jspm">
@@ -40,7 +40,7 @@
 			<fileset dir="src" includes="com/exedio/copedemo/front/cops/Error.jspm" />
 		</jspm>
 	</target>
-	
+
 	<path id="src.lib">
 		<pathelement location="build/classes/featuresrc" />
 		<pathelement location="lib/exedio-cops.jar" />
@@ -50,15 +50,15 @@
 		<pathelement location="lib/exedio-cope-servletutil.jar" />
 		<pathelement location="lib/slf4j-api.jar" />
 	</path>
-	
+
 	<path id="runtime.lib">
 		<path refid="src.lib" />
 		<pathelement location="lib/hsqldb.jar" />
 		<pathelement location="lib/mysql-connector-java.jar" />
 	</path>
-	
 
-	
+
+
 	<target name="src.compile" depends="feature.compile, src.jspm">
 		<compile srcdir="src">
 			<classpath>
@@ -68,7 +68,7 @@
 			</classpath>
 		</compile>
 	</target>
-	
+
 	<target name="testsrc.compile" depends="src.compile">
 		<compile srcdir="testsrc">
 			<classpath>
@@ -81,11 +81,11 @@
 			</classpath>
 		</compile>
 	</target>
-	
+
 	<target name="test.properties">
 		<echoSubProperties prefix="test" destfile="build/test.properties" />
 	</target>
-	
+
 	<target name="test" depends="testsrc.compile, test.properties">
 		<echo message="Using ${test.cope.connection.url} ${test.cope.connection.username}" />
 		<mkdir dir="build/testresults" />
@@ -109,7 +109,7 @@
 			<assertions><enable/></assertions>
 		</junit>
 	</target>
-	
+
 	<target name="web" depends="src.compile">
 		<copy todir="web/WEB-INF/classes">
 			<fileset dir="build/classes/featuresrc" />
@@ -134,7 +134,7 @@
 		</copy>
 		<touch file="web/WEB-INF/web.xml" />
 	</target>
-		
+
 	<target name="war" depends="web">
 		<copy file="web/WEB-INF/web.xml" tofile="build/web4war.xml" overwrite="true">
 			<filterset>
@@ -148,7 +148,7 @@
 			<zipfileset dir="build" includes="web4war.xml" fullpath="WEB-INF/web.xml" />
 		</zip>
 	</target>
-		
+
 	<target name="catalina">
 		<property name="catalina.root" value="apache-tomcat-${tomcat-version}" />
 		<untar src="lib/apache-tomcat.tar.gz"
@@ -172,7 +172,7 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="tomcat" depends="web, catalina">
 		<echoSubProperties prefix="tomcat" destfile="build/tomcat.properties" />
 		<copy file="conf/context.xml" tofile="tomcat/conf/Catalina/localhost/${webapp}.xml" overwrite="true">
@@ -181,7 +181,7 @@
 			</filterset>
 		</copy>
 	</target>
-	
+
 	<target name="clean">
 		<delete dir="build" />
 		<delete>
@@ -243,13 +243,13 @@
 			<tag name="cope.dispatch" enabled="true" />
 		</javadoc>
 	</target>
-	
+
 	<target name="jspm" depends="src.jspm" />
 	<target name="src" depends="jspm" description="creates all sources, so the IDE does not complain" />
 	<target name="compile" depends="src.compile, testsrc.compile" />
 	<target name="build" depends="compile, test, war, api" />
-	
-	
+
+
 	<target name="findbugs" depends="compile, findbugs.taskdef">
 		<findbugs
 					home="${basedir}/build/findbugs-home"
@@ -273,9 +273,9 @@
 			</auxclasspath>
 		</findbugs>
 	</target>
-	
+
 	<target name="all" depends="build, findbugs" />
-	
+
 	<target name="jenkins" depends="all, tomcat">
 		<copy todir="${basedir}/build/success">
 			<fileset dir="${basedir}/build">
@@ -283,5 +283,5 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 </project>
