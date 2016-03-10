@@ -43,7 +43,7 @@ final class Admin_Jspm
 		<link rel="STYLESHEET" type="text/css" href="<%=AdminServlet.stylesheet%>"></link>
 	</head>
 	<body>
-		<a href="http://cope.sourceforge.net/" target="_blank"><img src="<%=AdminServlet.logo%>" alt="Exedio Logo" class="logo"></img></a>
+		<a href="https://exedio.github.io/" target="_blank"><img src="<%=AdminServlet.logo%>" alt="Exedio Logo" class="logo"></img></a>
 		<div class="displayName"><%=displayName%></div>
 		<h1>MxSampler</h1>
 		<%
