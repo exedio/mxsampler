@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	metadata-complete="true"
 	version="2.4">
-	
+
 	<!--
 		The flag metadata-complete above disables scanning the classpath for annotations such as
 		javax.servlet.annotation.WebServlet. This significatntly speeds up the server start,
@@ -15,23 +15,23 @@
 	-->
 
 	<display-name>cope mxsampler @BUILD_TAG@</display-name>
-	
+
 	<listener>
 		<listener-class>com.exedio.copedemo.front.PropertiesInitializer</listener-class>
 	</listener>
-	
+
 	<login-config>
 		<auth-method>BASIC</auth-method>
 		<realm-name>cope mxsampler by exedio</realm-name>
 	</login-config>
-	
+
 	<security-role><role-name>manager</role-name></security-role>
 	<security-constraint>
 		<web-resource-collection><web-resource-name/><url-pattern>/*</url-pattern></web-resource-collection>
 		<auth-constraint><role-name>manager</role-name></auth-constraint>
 		<user-data-constraint><transport-guarantee>CONFIDENTIAL</transport-guarantee></user-data-constraint>
 	</security-constraint>
-	
+
 	<servlet>
 		<servlet-name>admin</servlet-name>
 		<servlet-class>com.exedio.copedemo.admin.AdminServlet</servlet-class>
@@ -81,7 +81,7 @@
 		<filter-name>admin-csrf</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<session-config>
 		<session-timeout>30<!--minutes--></session-timeout>
 	</session-config>

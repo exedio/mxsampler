@@ -2,7 +2,7 @@
 <project name="ivy" default="copy">
 	<import file="common.xml" />
 	<target name="copy" depends="resolve">
-		
+
 		<!-- TODO move mapping into copy task below, using the firstmatchmapper in ant 1.8.0 -->
 		<move todir="artifacts/lib">
 			<globmapper from="*-jar.jar" to="*.jar" />
@@ -16,7 +16,7 @@
 				<include name="*-dist.tar.gz" />
 			</fileset>
 		</move>
-		
+
 		<copy overwrite="true" todir="../lib">
 			<fileset dir="artifacts/lib">
 				<exclude name="bsh-src.jar" />
@@ -30,6 +30,6 @@
 				<exclude name="xml-apis-ext.jar" />
 			</fileset>
 		</copy>
-		
+
 	</target>
 </project>

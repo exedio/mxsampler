@@ -1,7 +1,7 @@
 <!--
 	This is a tomcat server.xml for suitable for testing the
 	web applications of the COPE project.
-	
+
 	On production systems change the value for attribute shutdown
 	into some non-predictable password!
 -->

@@ -33,7 +33,7 @@ final class Email_Jspm
 	{
 		%>
 		<h2>Email</h2><%
-		
+
 		if(address!=null)
 		{
 		%>
