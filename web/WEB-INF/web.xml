@@ -25,6 +25,14 @@
 		<realm-name>cope mxsampler by exedio</realm-name>
 	</login-config>
 
+	<!--
+		The Jar Scanner is a security risk and can waste a lot of time at startup, so we disable it.
+		This has proven to work on Apache Tomcat Version 7.0.39.
+		See http://tomcat.apache.org/migration-7.html#Annotation_scanning
+		See https://confluence.exedio.com/confluence/display/cope/System+Setup#SystemSetup-JarScanner
+	-->
+	<absolute-ordering />
+
 	<security-role><role-name>manager</role-name></security-role>
 	<security-constraint>
 		<web-resource-collection><web-resource-name/><url-pattern>/*</url-pattern></web-resource-collection>
