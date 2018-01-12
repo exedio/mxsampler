@@ -224,23 +224,6 @@
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 			</classpath>
-			<tag name="cope.ignore" enabled="true" />
-			<tag name="cope.constructor" enabled="false" />
-			<tag name="cope.generic.constructor" enabled="false" />
-			<tag name="cope.get" enabled="false" />
-			<tag name="cope.set" enabled="false" />
-			<tag name="cope.for" enabled="true" />
-			<tag name="cope.touch" enabled="false" />
-			<tag name="cope.check" enabled="false" />
-			<tag name="cope.checkVerbosely" enabled="false" />
-			<tag name="cope.blind" enabled="false" />
-			<tag name="cope.generated" enabled="true" />
-			<tag name="cope.initial" enabled="true" />
-			<tag name="cope.finder" enabled="true" />
-			<tag name="cope.getURL" enabled="true" />
-			<tag name="cope.setRaw" enabled="true" />
-			<tag name="cope.next" enabled="true" />
-			<tag name="cope.dispatch" enabled="true" />
 		</javadoc>
 	</target>
 
