@@ -22,14 +22,7 @@
 		<copy overwrite="true" todir="../lib">
 			<fileset dir="artifacts/lib">
 				<exclude name="bsh-src.jar" />
-				<exclude name="commons-fileupload-javadoc.jar" />
-				<exclude name="commons-fileupload-source.jar" />
-				<exclude name="fop-javadoc.jar" />
-				<exclude name="portlet-api.jar" />
 				<exclude name="trove-src.jar" />
-				<exclude name="xalan.jar" />
-				<exclude name="batik-bridge.jar" />
-				<exclude name="xml-apis-ext.jar" />
 			</fileset>
 		</copy>
 
