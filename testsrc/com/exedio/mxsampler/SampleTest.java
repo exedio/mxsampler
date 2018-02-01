@@ -18,6 +18,7 @@
 
 package com.exedio.mxsampler;
 
+import static com.exedio.cope.junit.CopeAssert.assertWithin;
 import static com.exedio.mxsampler.Stuff.sampler;
 import static com.exedio.mxsampler.Stuff.samplerModel;
 

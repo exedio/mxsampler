@@ -21,8 +21,6 @@
 
 		<copy overwrite="true" todir="../lib">
 			<fileset dir="artifacts/lib">
-				<exclude name="bsh-src.jar" />
-				<exclude name="trove-src.jar" />
 			</fileset>
 		</copy>
 

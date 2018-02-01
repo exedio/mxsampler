@@ -74,7 +74,6 @@
 				<pathelement location="build/classes/src" />
 				<path refid="src.lib" />
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
-				<pathelement location="lib/exedio-cope-junit.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 				<pathelement location="lib/junit.jar" />
 			</classpath>
@@ -98,7 +97,6 @@
 				<pathelement location="build/classes/src" />
 				<pathelement location="build/classes/testsrc" />
 				<path refid="runtime.lib" />
-				<fileset file="lib/exedio-cope-junit.jar" />
 				<fileset file="lib/junit.jar" />
 			</classpath>
 			<test name="${test}" todir="build/testresults" outfile="copedemo" />
@@ -118,7 +116,7 @@
 			<fileset file="lib/exedio-cope.jar" />
 			<fileset file="lib/exedio-cope-console.jar" />
 			<fileset file="lib/exedio-cops.jar" />
-			<fileset file="lib/trove.jar" />
+			<fileset file="lib/trove4j.jar" />
 			<fileset file="lib/exedio-sendmail.jar" />
 			<fileset file="lib/exedio-cope-util.jar" />
 			<fileset file="lib/exedio-cope-servletutil.jar" />

@@ -22,16 +22,16 @@
 
 package com.exedio.mxsampler;
 
-import com.exedio.cope.junit.CopeAssert;
 import com.exedio.cope.util.Properties.Field;
 import com.exedio.cope.util.Sources;
 import com.exedio.copedemo.MainProperties;
+import junit.framework.TestCase;
 
 /**
  * This tests makes sure, that no properties are changed by accident.
  * Adapt if necessary.
  */
-public final class MainPropertiesTest extends CopeAssert
+public final class MainPropertiesTest extends TestCase
 {
 	public void testIt()
 	{

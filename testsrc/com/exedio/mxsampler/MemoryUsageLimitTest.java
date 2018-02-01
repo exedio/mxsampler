@@ -22,6 +22,8 @@
 
 package com.exedio.mxsampler;
 
+import static com.exedio.cope.junit.CopeAssert.assertContains;
+
 import com.exedio.cope.util.Properties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.Mail;

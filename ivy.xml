@@ -10,7 +10,7 @@
 				url="http://opensource.org/licenses/mit-license.html" />
 	</info>
 	<dependencies>
-		<dependency org="javax.servlet" name="servlet-api" rev="2.4" />
+		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="default->master,sources" />
 		<dependency org="org.apache" name="apache-tomcat" rev="7.0.29" />
 		<dependency org="findbugs-x" name="findbugs" rev="3.0.0" />
 		<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3">
@@ -20,12 +20,14 @@
 			<exclude org="org.hamcrest" module="hamcrest-core" />
 		</dependency>
 		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.6.4" conf="default->default,sources" />
-		<dependency org="com.exedio" name="cope" rev="7661" conf="default->hsqldb,mysql,junit,sources" />
-		<dependency org="com.exedio" name="copeutil" rev="312" />
-		<dependency org="com.exedio" name="copeservletutil" rev="31" />
+		<dependency org="com.exedio" name="cope" rev="9718" conf="default->hsqldb,mysql,instrument,sources,changelog" />
+		<dependency org="com.exedio" name="copeutil" rev="312" conf="default->runtime,sources,changelog" />
+		<dependency org="com.exedio" name="copeservletutil" rev="31" conf="default->runtime,sources,changelog" />
 		<dependency org="com.exedio" name="jspm" rev="90" />
-		<dependency org="com.exedio" name="copeconsole" rev="6504" />
-		<dependency org="com.exedio" name="cronjob" rev="221" />
+		<dependency org="com.exedio" name="copeconsole" rev="6773" />
+		<dependency org="com.exedio" name="cronjob" rev="221">
+			<exclude org="javax.servlet" module="servlet-api" />
+		</dependency>
 		<dependency org="com.exedio" name="cops" rev="267" />
 		<dependency org="com.exedio" name="sendmail" rev="198" />
 	</dependencies>
