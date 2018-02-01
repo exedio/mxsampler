@@ -1,9 +1,4 @@
 
-import hudson.plugins.jacoco.model.CoverageGraphLayout
-import hudson.plugins.jacoco.model.CoverageGraphLayout.CoverageType
-import hudson.plugins.jacoco.model.CoverageGraphLayout.CoverageValue
-import java.awt.Color
-
 timestamps
 {
 	//noinspection GroovyAssignabilityCheck
@@ -71,21 +66,6 @@ timestamps
 						usePreviousBuildAsReference: false,
 						useStableBuildAsReference: false,
 				)
-				step([$class: 'JacocoPublisher',
-						changeBuildStatus: true,
-						minimumBranchCoverage: '30',
-						coverageGraphLayout:
-								new CoverageGraphLayout()
-								.baseStroke(2f)
-								.axis().skipZero().crop(50)
-								.plot().type(CoverageType.BRANCH).value(CoverageValue.PERCENTAGE).color(Color.BLUE)
-								.axis().skipZero().crop()
-								.plot().type(CoverageType.BRANCH).value(CoverageValue.MISSED).color(Color.RED)
-								.axis().skipZero().crop()
-								.plot().type(CoverageType.LINE).value(CoverageValue.MISSED).color(Color.ORANGE),
-						execPattern: 'build/jacoco.exec',
-						classPattern:  'build/classes/featuresrc, build/classes/src',
-						sourcePattern:               'featuresrc, ' +          'src'])
 				archive 'build/success/*'
 			}
 		}
