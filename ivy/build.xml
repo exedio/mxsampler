@@ -3,6 +3,8 @@
 	<import file="common.xml" />
 	<target name="copy" depends="resolve">
 
+		<delete dir="../lib">
+		</delete>
 		<!-- TODO move mapping into copy task below, using the firstmatchmapper in ant 1.8.0 -->
 		<move todir="artifacts/lib">
 			<globmapper from="*-jar.jar" to="*.jar" />
