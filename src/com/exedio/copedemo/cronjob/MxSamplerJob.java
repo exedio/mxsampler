@@ -60,7 +60,7 @@ public abstract class MxSamplerJob extends AbstractJob
 	{
 		if(connectToken!=null)
 		{
-			connectToken.returnIt();
+			connectToken.returnItConditionally();
 			connectToken = null;
 		}
 

@@ -117,7 +117,7 @@ public class MxSampler
 		finally
 		{
 			if(mustReturn)
-				result.returnIt();
+				result.returnItConditionally();
 		}
 		// DO NOT WRITE ANYTHING HERE,
 		// OTHERWISE ConnectTokens MAY BE LOST
