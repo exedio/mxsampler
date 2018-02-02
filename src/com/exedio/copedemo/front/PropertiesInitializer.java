@@ -22,7 +22,7 @@
 
 package com.exedio.copedemo.front;
 
-import static com.exedio.cope.misc.ConnectToken.removeProperties;
+import static com.exedio.cope.misc.ConnectToken.removePropertiesVoid;
 
 import com.exedio.cope.servletutil.ServletSource;
 import com.exedio.copedemo.Main;
@@ -58,7 +58,7 @@ public final class PropertiesInitializer implements ServletContextListener
 	public void contextDestroyed(final ServletContextEvent sce)
 	{
 		MainProperties.instance.remove();
-		removeProperties(MxSamplerJob.model);
+		removePropertiesVoid(MxSamplerJob.model);
 		JdbcPurger.clearDriverRegistrations();
 	}
 }
