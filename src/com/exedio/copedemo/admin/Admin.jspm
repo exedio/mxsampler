@@ -23,7 +23,7 @@
 
 package com.exedio.copedemo.admin;
 
-import static com.exedio.cope.util.CharsetName.UTF8;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,7 +38,7 @@ final class Admin_Jspm
 %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=<%=UTF8%>"></meta>
+		<meta http-equiv="content-type" content="text/html; charset=<%=UTF_8%>"></meta>
 		<title>MxSampler</title>
 		<link rel="STYLESHEET" type="text/css" href="<%=AdminServlet.stylesheet%>"></link>
 	</head>
