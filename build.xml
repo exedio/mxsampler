@@ -147,6 +147,7 @@
 			</fileset>
 			<zipfileset dir="build" includes="web4war.xml" fullpath="WEB-INF/web.xml" />
 		</zip>
+		<plot file="build/${webapp}.war" />
 	</target>
 
 	<target name="catalina">
