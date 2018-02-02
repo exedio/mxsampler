@@ -31,10 +31,6 @@ import com.exedio.mxsampler.MxSamplerProperties;
 import com.exedio.sendmail.ErrorMailSource;
 import com.exedio.sendmail.MailData;
 import com.exedio.sendmail.MailSender;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Callable;
 import javax.mail.MessagingException;
 
 public final class MainProperties extends Properties
@@ -77,51 +73,18 @@ public final class MainProperties extends Properties
 	public final MemoryUsageLimit limitOld  = value("limit.old",  true, MemoryUsageLimit.factory("PS Old Gen" ));
 	public final MemoryUsageLimit limitPerm = value("limit.perm", true, MemoryUsageLimit.factory("PS Perm Gen"));
 
-	private Callable<?> getLimitOldTest () { return getLimitTest(limitOld , "limit.old" ); }
-	private Callable<?> getLimitPermTest() { return getLimitTest(limitPerm, "limit.perm"); }
-
-	@SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC_ANON")
-	private Callable<?> getLimitTest(final MemoryUsageLimit limit, final String key)
-	{
-		return new Callable<String>(){
-			@Override public String call()
-			{
-				return limit!=null ? limit.test() : "disabled";
-			}
-			@Override public String toString()
-			{
-				return key;
-			}
-		};
-	}
-
 
 	// smtp
 
 	public final MailSender smtp = value("smtp", MailSenderProperties.factory()).get();
 
-	public void testSmtp() throws MessagingException
+	@Probe void probeSmtp() throws MessagingException
 	{
 		final String subject = "Properties#testMailSender copedemo (" + Hostname.get() + ") \u00e4";
 		final MailData mail = new MailData(getMailFrom(), subject);
 		mail.addTo(errorMailTo);
 		mail.setTextPlain(subject);
 		smtp.sendMail(mail);
-	}
-
-	private Callable<?> getSmtpTest()
-	{
-		return new Callable<Void>(){
-			@Override public Void call() throws MessagingException
-			{
-				testSmtp();
-				return null;
-			}
-			@Override public String toString()
-			{
-				return "smtp";
-			}
-		};
 	}
 
 
@@ -145,15 +108,6 @@ public final class MainProperties extends Properties
 	private MainProperties(final Source source)
 	{
 		super(source);
-	}
-
-	@Override
-	public List<? extends Callable<?>> getTests()
-	{
-		return Arrays.<Callable<?>>asList(
-				getLimitOldTest(),
-				getLimitPermTest(),
-				getSmtpTest());
 	}
 
 

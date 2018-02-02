@@ -59,7 +59,7 @@ public final class MemoryUsageLimit extends Properties
 		}
 	}
 
-	public String test()
+	@Probe String probePoolName()
 	{
 		for(final MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans())
 		{
