@@ -50,12 +50,13 @@ public class MxSampler
 	public MxSampler()
 	{
 		this.samplerModel =
-			new Model(
-				new MxSamplerRevisions(),
+			Model.builder().add(
 				MxSamplerGlobal.TYPE,
 				MxSamplerMemoryPoolName.TYPE,
 				MxSamplerMemoryPool.TYPE,
-				MxSamplerPurge.TYPE);
+				MxSamplerPurge.TYPE).
+				add(new MxSamplerRevisions()).
+				build();
 		// TODO make a meaningful samplerModel#toString()
 	}
 
