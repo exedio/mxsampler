@@ -127,16 +127,6 @@ public class MxSampler
 	void check()
 	{
 		samplerModel.reviseIfSupportedAndAutoEnabled();
-		try
-		{
-			samplerModel.startTransaction("check");
-			samplerModel.checkSchema();
-			samplerModel.commit();
-		}
-		finally
-		{
-			samplerModel.rollbackIfNotCommitted();
-		}
 	}
 
 	public final void sample()
