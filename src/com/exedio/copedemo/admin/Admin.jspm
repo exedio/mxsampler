@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 @SuppressWarnings("HardcodedLineSeparator")
 final class Admin_Jspm
 {
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 	static void write(
 			final Out out,
 			final AdminCop cop,

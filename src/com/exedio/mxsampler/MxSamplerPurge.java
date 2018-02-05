@@ -95,7 +95,7 @@ final class MxSamplerPurge extends Item
 	}
 
 
-	MxSamplerPurge(
+	private MxSamplerPurge(
 			final Type<?> type,
 			final Date limit,
 			final int rows,

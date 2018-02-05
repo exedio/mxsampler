@@ -35,6 +35,7 @@ abstract class AdminCop extends Cop
 	abstract void post(HttpServletRequest request);
 	abstract void writeBody(Out out, HttpServletRequest request);
 
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 	static final AdminCop getCop(final String pathInfo)
 	{
 		if(pathInfo.equals('/' + EmailCop.PATH_INFO))
