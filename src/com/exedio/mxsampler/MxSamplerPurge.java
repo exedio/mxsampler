@@ -82,6 +82,7 @@ final class MxSamplerPurge extends Item
 		try
 		{
 			model.startTransaction(samplerString + " purge register");
+			//noinspection ResultOfObjectAllocationIgnored
 			new MxSamplerPurge(type, limit, rows, toMillies(end, start));
 			model.commit();
 		}
