@@ -23,13 +23,16 @@
 package com.exedio.mxsampler;
 
 import com.exedio.cope.util.Properties;
-import com.exedio.sendmail.ErrorMailSource;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class MemoryUsageLimit extends Properties
 {
+	private static final Logger logger = LoggerFactory.getLogger(MemoryUsageLimit.class);
+
 	private final String poolName;
 	private final int ratioPercent = value("ratioPercent", 75, 1);
 
@@ -38,8 +41,7 @@ public final class MemoryUsageLimit extends Properties
 
 	public void check(
 			final MemoryPoolMXBean pool,
-			final MemoryUsage collectionUsage,
-			final ErrorMailSource errorMailSource)
+			final MemoryUsage collectionUsage)
 	{
 		if(matches(pool))
 		{
@@ -53,7 +55,8 @@ public final class MemoryUsageLimit extends Properties
 			final long max = collectionUsage.getMax();
 			final long usedLimit = (ratioPercent * max) / 100l;
 			if(used > usedLimit)
-				errorMailSource.createMail(
+				//noinspection StringConcatenationArgumentToLogCall TODO
+				logger.error(
 						"MxSampler MemoryUsageLimit " + pool.getName() + " exceeded: " +
 						used + " > " + usedLimit + " = "+ ratioPercent +"% of " + max);
 		}

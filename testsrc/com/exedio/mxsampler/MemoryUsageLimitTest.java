@@ -22,74 +22,76 @@
 
 package com.exedio.mxsampler;
 
-import static com.exedio.cope.junit.CopeAssert.assertContains;
-
+import ch.qos.logback.classic.Logger;
 import com.exedio.cope.util.Properties;
-import com.exedio.sendmail.ErrorMailSource;
-import com.exedio.sendmail.Mail;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Collection;
-import java.util.Iterator;
+import org.slf4j.LoggerFactory;
 
 public final class MemoryUsageLimitTest extends ConnectedTest
 {
 	public void testExceeds()
 	{
 		final MemoryUsageLimit limit = MemoryUsageLimit.factory("myPoolName").create(source(45));
-		final ErrorMailSource errorMailSource = new ErrorMailSource("from", "to", "testSubject");
 
 		final MyUsage collectionUsage = new MyUsage(46, 100);
-		limit.check(new MyBean("myPoolName"), collectionUsage, errorMailSource);
-		{
-			final Iterator<? extends Mail> i = errorMailSource.getMailsToSend(Integer.MAX_VALUE).iterator();
-			final Mail mail = i.next();
-			assertTrue(mail.getTextPlain(), mail.getTextPlain().endsWith(
-					"MxSampler MemoryUsageLimit myPoolName exceeded: 46 > 45 = 45% of 100"));
-			assertFalse(i.hasNext());
-			mail.notifySent();
-		}
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolName"), collectionUsage);
+		appender.assertError("MxSampler MemoryUsageLimit myPoolName exceeded: 46 > 45 = 45% of 100");
+		appender.assertEmpty();
 
 		// do not send twice
-		limit.check(new MyBean("myPoolName"), collectionUsage, errorMailSource);
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolName"), collectionUsage);
+		appender.assertEmpty();
 
 		// emulate Full GC
 		final MyUsage collectionUsageGC = new MyUsage(47, 100);
-		limit.check(new MyBean("myPoolName"), collectionUsageGC, errorMailSource);
-		{
-			final Iterator<? extends Mail> i = errorMailSource.getMailsToSend(Integer.MAX_VALUE).iterator();
-			final Mail mail = i.next();
-			assertTrue(mail.getTextPlain(), mail.getTextPlain().endsWith(
-					"MxSampler MemoryUsageLimit myPoolName exceeded: 47 > 45 = 45% of 100"));
-			assertFalse(i.hasNext());
-			mail.notifySent();
-		}
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolName"), collectionUsageGC);
+		appender.assertError("MxSampler MemoryUsageLimit myPoolName exceeded: 47 > 45 = 45% of 100");
+		appender.assertEmpty();
 
 		// do not send twice
-		limit.check(new MyBean("myPoolName"), collectionUsageGC, errorMailSource);
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolName"), collectionUsageGC);
+		appender.assertEmpty();
 	}
 
 	public void testAtBorder()
 	{
 		final MemoryUsageLimit limit = MemoryUsageLimit.factory("myPoolName").create(source(45));
-		final ErrorMailSource errorMailSource = new ErrorMailSource("from", "to", "testSubject");
 
 		final MyUsage collectionUsage = new MyUsage(45, 100);
-		limit.check(new MyBean("myPoolName"), collectionUsage, errorMailSource);
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolName"), collectionUsage);
+		appender.assertEmpty();
 	}
 
 	public void testNameMismatch()
 	{
 		final MemoryUsageLimit limit = MemoryUsageLimit.factory("myPoolName").create(source(45));
-		final ErrorMailSource errorMailSource = new ErrorMailSource("from", "to", "testSubject");
 
 		final MyUsage collectionUsage = new MyUsage(46, 100);
-		limit.check(new MyBean("myPoolNameX"), collectionUsage, errorMailSource);
-		assertContains(errorMailSource.getMailsToSend(Integer.MAX_VALUE));
+		limit.check(new MyBean("myPoolNameX"), collectionUsage);
+		appender.assertEmpty();
+	}
+
+
+	private MockAppender appender;
+
+	@Override
+	@SuppressWarnings({"LoggerInitializedWithForeignClass", "OverlyStrongTypeCast"})
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+		assertNull(appender);
+		appender = new MockAppender();
+		((Logger)LoggerFactory.getLogger(MemoryUsageLimit.class)).addAppender(appender);
+	}
+
+	@Override
+	@SuppressWarnings({"LoggerInitializedWithForeignClass", "OverlyStrongTypeCast"})
+	protected void tearDown() throws Exception
+	{
+		((Logger)LoggerFactory.getLogger(MemoryUsageLimit.class)).detachAppender(appender);
+		appender = null;
+		super.tearDown();
 	}
 
 

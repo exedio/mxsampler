@@ -75,6 +75,8 @@
 				<path refid="src.lib" />
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
+				<pathelement location="lib/logback-classic.jar" />
+				<pathelement location="lib/logback-core.jar" />
 				<pathelement location="lib/junit.jar" />
 			</classpath>
 		</compile>
@@ -97,6 +99,8 @@
 				<pathelement location="build/classes/src" />
 				<pathelement location="build/classes/testsrc" />
 				<path refid="runtime.lib" />
+				<pathelement location="lib/logback-classic.jar" />
+				<pathelement location="lib/logback-core.jar" />
 				<fileset file="lib/junit.jar" />
 			</classpath>
 			<test name="${test}" todir="build/testresults" outfile="copedemo" />

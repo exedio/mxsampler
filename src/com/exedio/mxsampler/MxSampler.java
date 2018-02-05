@@ -167,12 +167,12 @@ public class MxSampler
 				{
 					final MemoryUsageLimit limit = properties.limitOld;
 					if(limit!=null)
-						limit.check(pool, collectionUsage, properties.errorMailSource);
+						limit.check(pool, collectionUsage);
 				}
 				{
 					final MemoryUsageLimit limit = properties.limitPerm;
 					if(limit!=null)
-						limit.check(pool, collectionUsage, properties.errorMailSource);
+						limit.check(pool, collectionUsage);
 				}
 
 				sv.clear();
