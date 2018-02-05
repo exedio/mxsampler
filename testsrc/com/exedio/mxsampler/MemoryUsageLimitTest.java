@@ -135,7 +135,7 @@ public final class MemoryUsageLimitTest extends ConnectedTest
 	}
 
 	@SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC_ANON")
-	private Properties.Source source(final int ratioPercent)
+	private static Properties.Source source(final int ratioPercent)
 	{
 		return new Properties.Source(){
 

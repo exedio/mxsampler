@@ -53,7 +53,7 @@ public final class StrictRefererValidationFilter implements Filter
 		doFilter((HttpServletRequest)request, (HttpServletResponse)response, chain);
 	}
 
-	private void doFilter(
+	private static void doFilter(
 			final HttpServletRequest request,
 			final HttpServletResponse response,
 			final FilterChain chain)
