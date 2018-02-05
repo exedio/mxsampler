@@ -77,7 +77,7 @@ abstract class AbstractJob implements Job
 	}
 
 
-	public abstract void runWatched(JobContext ctx) throws Exception;
+	public abstract void runWatched(JobContext ctx);
 
 	/**
 	 * TODO remove when cronjob provides onException
