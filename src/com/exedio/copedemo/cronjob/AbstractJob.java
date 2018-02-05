@@ -22,8 +22,6 @@
 
 package com.exedio.copedemo.cronjob;
 
-import com.exedio.cope.util.JobContext;
-import com.exedio.copedemo.MainProperties;
 import com.exedio.cronjob.Job;
 
 abstract class AbstractJob implements Job
@@ -74,25 +72,5 @@ abstract class AbstractJob implements Job
 	public final long getStopTimeout()
 	{
 		return 1000;
-	}
-
-
-	public abstract void runWatched(JobContext ctx);
-
-	/**
-	 * TODO remove when cronjob provides onException
-	 */
-	@Override
-	public void run(final JobContext ctx) throws Exception
-	{
-		try
-		{
-			runWatched(ctx);
-		}
-		catch(final Exception e)
-		{
-			MainProperties.get().errorMailSource.createMail("AbstractJob", e);
-			throw e;
-		}
 	}
 }

@@ -28,7 +28,7 @@ import com.exedio.copedemo.MainProperties;
 final class SendErrorMailJob extends AbstractJob
 {
 	@Override
-	public void runWatched(final JobContext ctx)
+	public void run(final JobContext ctx)
 	{
 		final MainProperties properties = MainProperties.get();
 		properties.smtp.sendMails(properties.errorMailSource, 100, ctx);

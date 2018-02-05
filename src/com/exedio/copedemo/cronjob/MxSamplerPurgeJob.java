@@ -28,7 +28,7 @@ import com.exedio.copedemo.MainProperties;
 final class MxSamplerPurgeJob extends MxSamplerJob
 {
 	@Override
-	public void runWatched(final JobContext ctx)
+	public void run(final JobContext ctx)
 	{
 		MainProperties.get().mxSampler.purge(sampler, ctx);
 	}

@@ -27,7 +27,7 @@ import com.exedio.cope.util.JobContext;
 final class MxSamplerSampleJob extends MxSamplerJob
 {
 	@Override
-	public void runWatched(final JobContext ctx)
+	public void run(final JobContext ctx)
 	{
 		sampler.sample();
 	}
