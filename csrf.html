@@ -7,19 +7,19 @@
 	</head>
 	<body>
 		<a href="https://exedio.github.io/" target="_blank"><img src="src/com/exedio/copedemo/admin/logo.png" alt="Exedio Logo" class="logo"></a>
-		<h1>COPE Demo Application</h1>
+		<h1>MxSampler</h1>
 		<h2>Test Page for Cross Site Request Forgery</h2>
 		<div>
 			All the following forms should be rejected by the Cross Site Request Forgery detection.
 		</div>
 		<h3>Sending Emails</h3>
-		<form method="post" action="https://localhost:8443/copedemo/admin/email.html">
+		<form method="post" action="https://localhost:8443/mxsampler/email.html">
 			Email Address:
 			<input name="test.email.address" size="40"></input>
 			<input type="submit" value="Send"></input>
 		</form>
 		<h3>Creating Database Schema</h3>
-		<form method="post" action="https://localhost:8443/copedemo/admin/console/schema.html">
+		<form method="post" action="https://localhost:8443/mxsampler/console/schema.html">
 			<input type="submit" name="schema.create" value="create" />
 		</form>
 	</body>
