@@ -33,6 +33,11 @@ final class HomeCop extends AdminCop
 		super(PATH_INFO);
 	}
 
+	LogCop toLog()
+	{
+		return new LogCop();
+	}
+
 	EmailCop toEmail()
 	{
 		return new EmailCop();

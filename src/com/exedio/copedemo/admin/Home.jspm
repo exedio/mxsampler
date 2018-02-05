@@ -49,6 +49,7 @@ final class Home_Jspm
 			</li>
 			<li>
 				Tests:
+				<a href="<%=cop.toLog  ()%>" target="_blank">Log</a>,
 				<a href="<%=cop.toEmail()%>" target="_blank">Email</a>,
 				<a href="<%=cop.toOutOfMemoryError()%>" target="_blank">OutOfMemoryError</a>,
 			</li>

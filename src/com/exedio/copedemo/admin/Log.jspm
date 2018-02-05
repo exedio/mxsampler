@@ -1,0 +1,77 @@
+<%
+/*
+ * Copyright (C) 2004-2011  exedio GmbH (www.exedio.com)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+package com.exedio.copedemo.admin;
+
+import static com.exedio.copedemo.admin.LogCop.LOG;
+import static com.exedio.copedemo.admin.LogCop.LOGGER_NAME;
+import static com.exedio.copedemo.admin.LogCop.THROWABLE;
+
+import com.exedio.copedemo.admin.LogCop.Level;
+import org.slf4j.Logger;
+
+final class Log_Jspm
+{
+	@SuppressWarnings("HardcodedLineSeparator")
+	static void writeBody(
+			final Out out,
+			final Logger logger)
+	{
+		%>
+		<h2>Log</h2>
+		<div>
+			Logs via slf4j.
+		</div>
+		<form method="post"><table border="0">
+			<tr>
+				<th>Logger</th>
+				<td><input name="<%=LOGGER_NAME%>" size="40" value="<%= logger.getName() %>"></input></td>
+				<td></td>
+			</tr><%
+
+		for(final Level level : Level.values())
+		{
+			%>
+			<tr>
+				<td><%=level.name()%></td>
+				<td><input name="<%=LOG%><%=level.name()%>" size="40"></input></td>
+				<td><%= level.isEnabled(logger)?"enabled":"disabled" %></td>
+			</tr><%
+		}
+		%>
+			<tr>
+				<td colspan="3"><input type="checkbox" name="<%=THROWABLE%>"></input> with throwable</td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="submit" value="Log"></input></td>
+			</tr>
+		</table></form><%
+	}
+
+
+	private Log_Jspm()
+	{
+		// prevent instantiation
+	}
+}
+%>
