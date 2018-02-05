@@ -36,6 +36,7 @@ final class ModelConnector implements Runnable
 	{
 		synchronized(lock)
 		{
+			//noinspection IfStatementWithNegatedCondition
 			if(createdSchema!=model)
 			{
 				dropAndDisconnectIfNeeded();
