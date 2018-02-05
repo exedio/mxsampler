@@ -38,11 +38,6 @@ final class HomeCop extends AdminCop
 		return new LogCop();
 	}
 
-	EmailCop toEmail()
-	{
-		return new EmailCop();
-	}
-
 	OutOfMemoryErrorCop toOutOfMemoryError()
 	{
 		return new OutOfMemoryErrorCop();

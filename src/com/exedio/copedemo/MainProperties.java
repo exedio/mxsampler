@@ -23,15 +23,9 @@
 package com.exedio.copedemo;
 
 import com.exedio.cope.util.Properties;
-import com.exedio.copedemo.feature.sendmail.MailSenderProperties;
 import com.exedio.copedemo.feature.util.PropertiesInstance;
-import com.exedio.copedemo.misc.Hostname;
 import com.exedio.mxsampler.MemoryUsageLimit;
 import com.exedio.mxsampler.MxSamplerProperties;
-import com.exedio.sendmail.ErrorMailSource;
-import com.exedio.sendmail.MailData;
-import com.exedio.sendmail.MailSender;
-import javax.mail.MessagingException;
 
 public final class MainProperties extends Properties
 {
@@ -58,34 +52,10 @@ public final class MainProperties extends Properties
 	}
 
 
-	// errorMail
-
-	private final String errorMailTo = value("errorMail.to", (String)null);
-	public final ErrorMailSource errorMailSource =
-			new ErrorMailSource(
-				errorMailTo,
-				errorMailTo,
-				"copedemo error (" + Hostname.get() + ')');
-
-
 	// limit
 
 	public final MemoryUsageLimit limitOld  = value("limit.old",  true, MemoryUsageLimit.factory("PS Old Gen" ));
 	public final MemoryUsageLimit limitPerm = value("limit.perm", true, MemoryUsageLimit.factory("PS Perm Gen"));
-
-
-	// smtp
-
-	public final MailSender smtp = value("smtp", MailSenderProperties.factory()).get();
-
-	@Probe void probeSmtp() throws MessagingException
-	{
-		final String subject = "Properties#testMailSender copedemo (" + Hostname.get() + ") \u00e4";
-		final MailData mail = new MailData(getMailFrom(), subject);
-		mail.addTo(errorMailTo);
-		mail.setTextPlain(subject);
-		smtp.sendMail(mail);
-	}
 
 
 	public final String adminRefererPrefix = value("admin.refererPrefix", "https://localhost:8443" + contextPath + "/");

@@ -41,8 +41,7 @@ public final class MainPropertiesTest extends TestCase
 		for(final Field field : p.getFields())
 		{
 			final String key = field.getKey();
-			if(!key.startsWith("mxSampler.cope.") &&
-				!key.startsWith("smtp."))
+			if(!key.startsWith("mxSampler.cope."))
 				assertTrue(key, field.isSpecified());
 		}
 

@@ -1,4 +1,3 @@
-* use slf4j instead of ErrorMailSource
 * use instrumentor
 * use Model#startTransactionTry
 * use ConnectToken#returnOnFailureOf

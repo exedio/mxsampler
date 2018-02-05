@@ -42,8 +42,6 @@ abstract class AdminCop extends Cop
 		{
 			case '/' + LogCop.PATH_INFO:
 				return new LogCop();
-			case '/' + EmailCop.PATH_INFO:
-				return new EmailCop();
 			case '/' + OutOfMemoryErrorCop.PATH_INFO:
 				return new OutOfMemoryErrorCop();
 			default:

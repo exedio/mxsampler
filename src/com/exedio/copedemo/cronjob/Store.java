@@ -39,7 +39,6 @@ public final class Store implements CronjobStore
 	public List<? extends Job> getJobs()
 	{
 		final AbstractJob[] result = {
-				new SendErrorMailJob(),
 				new MxSamplerSampleJob(),
 				new MxSamplerPurgeJob(),
 		};

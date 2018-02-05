@@ -30,6 +30,5 @@
 			<exclude org="javax.servlet" module="servlet-api" />
 		</dependency>
 		<dependency org="com.exedio" name="cops" rev="267" conf="default->runtime,sources,changelog" />
-		<dependency org="com.exedio" name="sendmail" rev="198" />
 	</dependencies>
 </ivy-module>
