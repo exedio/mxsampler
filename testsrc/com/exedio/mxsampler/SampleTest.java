@@ -99,7 +99,7 @@ public class SampleTest extends ConnectedTest
 
 	private static <E extends Item> Iterator<E> iter(final Type<E> type)
 	{
-		final Query<E> q = new Query<E>(type.getThis());
+		final Query<E> q = new Query<>(type.getThis());
 		q.setOrderBy(type.getThis(), true);
 		return q.search().iterator();
 	}
