@@ -150,6 +150,7 @@ public class MxSampler
 				sv.add(MxSamplerGlobal.objectPendingFinalizationCount.map(objectPendingFinalizationCount));
 				sv.add(MxSamplerGlobal.totalCompilationTime.map(totalCompilationTime));
 				sv.add(MxSamplerGlobal.availableProcessors.map(availableProcessors));
+				//noinspection FloatingPointEquality
 				sv.add(MxSamplerGlobal.systemLoadAverage.map(systemLoadAverage==-1?null:systemLoadAverage));
 				sv.add(MxSamplerGlobal.threadCount.map(threadCount));
 				sv.add(MxSamplerGlobal.peakThreadCount.map(peakThreadCount));
