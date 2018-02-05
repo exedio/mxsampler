@@ -27,6 +27,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import javax.servlet.http.HttpServletRequest;
 
+@SuppressWarnings("HardcodedLineSeparator")
 final class Admin_Jspm
 {
 	static void write(

@@ -25,6 +25,7 @@ package com.exedio.copedemo.admin;
 
 import static com.exedio.copedemo.admin.EmailCop.ADDRESS;
 
+@SuppressWarnings("HardcodedLineSeparator")
 final class Email_Jspm
 {
 	static void writeBody(

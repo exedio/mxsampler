@@ -31,6 +31,7 @@ import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_CLEAR;
 import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_NUMBER;
 import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_SIZE;
 
+@SuppressWarnings("HardcodedLineSeparator")
 final class OutOfMemoryError_Jspm
 {
 	static void writeBody(

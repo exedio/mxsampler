@@ -23,6 +23,7 @@
 
 package com.exedio.copedemo.admin;
 
+@SuppressWarnings("HardcodedLineSeparator")
 final class Home_Jspm
 {
 	static void writeBody(
