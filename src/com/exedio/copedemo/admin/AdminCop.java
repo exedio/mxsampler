@@ -38,11 +38,14 @@ abstract class AdminCop extends Cop
 	@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 	static final AdminCop getCop(final String pathInfo)
 	{
-		if(pathInfo.equals('/' + EmailCop.PATH_INFO))
-			return new EmailCop();
-		else if(pathInfo.equals('/' + OutOfMemoryErrorCop.PATH_INFO))
-			return new OutOfMemoryErrorCop();
-
-		return new HomeCop();
+		switch(pathInfo)
+		{
+			case '/' + EmailCop.PATH_INFO:
+				return new EmailCop();
+			case '/' + OutOfMemoryErrorCop.PATH_INFO:
+				return new OutOfMemoryErrorCop();
+			default:
+				return new HomeCop();
+		}
 	}
 }
