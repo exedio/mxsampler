@@ -29,7 +29,7 @@ public final class PropertiesInstance<P extends Properties>
 	private volatile P value = null;
 
 	/**
-	 * @return Returns the value of the parameter <code>newInstance</code>.
+	 * @return Returns the value of the parameter {@code newInstance}.
 	 */
 	public P set(final P newValue)
 	{
