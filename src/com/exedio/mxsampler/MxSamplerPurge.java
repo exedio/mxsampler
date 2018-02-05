@@ -26,7 +26,9 @@ import static com.exedio.cope.SchemaInfo.supportsNativeDate;
 import static com.exedio.cope.misc.TimeUtil.toMillies;
 
 import com.exedio.cope.ActivationParameters;
+import com.exedio.cope.CopyConstraint;
 import com.exedio.cope.DateField;
+import com.exedio.cope.FunctionField;
 import com.exedio.cope.IntegerField;
 import com.exedio.cope.Item;
 import com.exedio.cope.LongField;
@@ -59,7 +61,7 @@ final class MxSamplerPurge extends Item
 	throws SQLException
 	{
 		ctx.stopIfRequested();
-		final DateField field = MxSamplerGlobal.replaceByCopy(MxSamplerGlobal.date, type);
+		final DateField field = replaceByCopy(MxSamplerGlobal.date, type);
 		final Model model = type.getModel();
 		final String bf =
 			"delete from " + quoteName(model, getTableName (type )) +
@@ -92,6 +94,26 @@ final class MxSamplerPurge extends Item
 		}
 
 		ctx.incrementProgress(rows);
+	}
+
+	private static <F extends FunctionField<?>> F replaceByCopy(final F field, final Type<?> type)
+	{
+		if(field.getType()!=MxSamplerGlobal.TYPE)
+			throw new IllegalArgumentException(field.getID());
+		if(type==MxSamplerGlobal.TYPE)
+			return field;
+
+		for(final CopyConstraint cc : type.getCopyConstraints())
+		{
+			if(cc.getTemplate()==field)
+			{
+				final FunctionField<?> result = cc.getCopy();
+				@SuppressWarnings("unchecked")
+				final F resultCasted = (F)result;
+				return resultCasted;
+			}
+		}
+		throw new RuntimeException(field.getID());
 	}
 
 
