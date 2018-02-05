@@ -44,7 +44,7 @@ final class MxSamplerMemoryPool extends Item
 
 	static List<SetValue<?>> map(final MxSamplerGlobal m)
 	{
-		return Arrays.asList((SetValue<?>)
+		return Arrays.asList(
 			model         .map(m),
 			date          .map(MxSamplerGlobal.date.get(m)),
 			sampler       .map(MxSamplerGlobal.sampler.get(m)),
