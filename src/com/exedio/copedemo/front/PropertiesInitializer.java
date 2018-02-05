@@ -31,6 +31,7 @@ import com.exedio.copedemo.cronjob.MxSamplerJob;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import org.slf4j.LoggerFactory;
 
 public final class PropertiesInitializer implements ServletContextListener
 {
@@ -60,5 +61,20 @@ public final class PropertiesInitializer implements ServletContextListener
 		MainProperties.instance.remove();
 		removePropertiesVoid(MxSamplerJob.model);
 		JdbcPurger.clearDriverRegistrations();
+		contextDestroyedLogger();
+	}
+
+	private static void contextDestroyedLogger()
+	{
+		try
+		{
+			Class.forName("ch.qos.logback.classic.LoggerContext").
+			getDeclaredMethod("stop").
+			invoke(LoggerFactory.getILoggerFactory());
+		}
+		catch(final ReflectiveOperationException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 }

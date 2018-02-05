@@ -125,9 +125,9 @@
 			<fileset file="lib/exedio-cronjob.jar" />
 			<fileset file="lib/hsqldb.jar" />
 			<fileset file="lib/mysql-connector-java.jar" />
-			<fileset file="lib/log4j-bundle.jar" />
 			<fileset file="lib/slf4j-api.jar" />
-			<fileset file="lib/slf4j-log4j12.jar" />
+			<fileset file="lib/logback-classic.jar" />
+			<fileset file="lib/logback-core.jar" />
 		</copy>
 		<touch file="web/WEB-INF/web.xml" />
 	</target>
@@ -248,8 +248,7 @@
 			<auxclasspath>
 				<path refid="src.lib" />
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
-				<pathelement location="lib/slf4j-log4j12.jar" />
-				<pathelement location="lib/log4j-bundle.jar" />
+				<pathelement location="lib/slf4j-api.jar" />
 				<pathelement location="${basedir}/lib/junit.jar" />
 			</auxclasspath>
 		</findbugs>

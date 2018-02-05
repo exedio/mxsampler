@@ -54,6 +54,9 @@ final class Home_Jspm
 				<a href="<%=cop.toOutOfMemoryError()%>" target="_blank">OutOfMemoryError</a>,
 			</li>
 			<li>
+				<a href="<%=contextPath%>/logback" target="_blank">Logback</a>
+			</li>
+			<li>
 				tomcat:
 				<a href="/manager/html" target="_blank">manager</a>,
 				<a href="/host-manager/html" target="_blank">host-manager</a>
