@@ -75,7 +75,7 @@ public final class MxSamplerProperties extends Properties
 
 	public static Factory<MxSamplerProperties> factory()
 	{
-		return source -> new MxSamplerProperties(source);
+		return MxSamplerProperties::new;
 	}
 
 	private MxSamplerProperties(final Source source)

@@ -95,7 +95,7 @@ public final class MainProperties extends Properties
 
 	public static Factory<MainProperties> factory()
 	{
-		return source -> new MainProperties(source);
+		return MainProperties::new;
 	}
 
 	private MainProperties(final Source source)

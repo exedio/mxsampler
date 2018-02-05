@@ -50,7 +50,7 @@ public final class MailSenderProperties extends Properties
 
 	public static Factory<MailSenderProperties> factory()
 	{
-		return source -> new MailSenderProperties(source);
+		return MailSenderProperties::new;
 	}
 
 	private MailSenderProperties(final Source source)
@@ -65,7 +65,7 @@ public final class MailSenderProperties extends Properties
 
 		private static Factory<Auth> factory()
 		{
-			return source -> new Auth(source);
+			return Auth::new;
 		}
 
 		private Auth(final Source source)
