@@ -23,7 +23,6 @@
 		<compile srcdir="featuresrc">
 			<classpath>
 				<path refid="src.lib" />
-				<pathelement location="lib/servlet-api.jar" />
 				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 			</classpath>
