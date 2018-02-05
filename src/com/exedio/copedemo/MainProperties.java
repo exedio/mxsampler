@@ -37,7 +37,7 @@ public final class MainProperties extends Properties
 {
 	/**
 	 * This field relies on
-	 * {@link com.exedio.cope.servletutil.ServletProperties#create(javax.servlet.ServletContext)},
+	 * {@link com.exedio.cope.servletutil.ServletSource#create(javax.servlet.ServletContext)},
 	 * which provides a key <tt>contextPath</tt> containing the result of
 	 * {@link javax.servlet.ServletContext#getContextPath()}.
 	 *
