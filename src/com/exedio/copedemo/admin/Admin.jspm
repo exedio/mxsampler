@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 
 final class Admin_Jspm
 {
-	static final void write(
+	static void write(
 			final Out out,
 			final AdminCop cop,
 			final HttpServletRequest request,

@@ -27,7 +27,7 @@ import java.net.UnknownHostException;
 
 public final class Hostname
 {
-	public static final String get()
+	public static String get()
 	{
 		try
 		{

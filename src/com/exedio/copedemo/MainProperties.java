@@ -115,7 +115,7 @@ public final class MainProperties extends Properties
 
 	public static final PropertiesInstance<MainProperties> instance = new PropertiesInstance<MainProperties>();
 
-	public static final MainProperties get()
+	public static MainProperties get()
 	{
 		return instance.get();
 	}

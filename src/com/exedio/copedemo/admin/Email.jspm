@@ -27,7 +27,7 @@ import static com.exedio.copedemo.admin.EmailCop.ADDRESS;
 
 final class Email_Jspm
 {
-	static final void writeBody(
+	static void writeBody(
 			final Out out,
 			final String address)
 	{
