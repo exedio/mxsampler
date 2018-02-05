@@ -25,10 +25,10 @@
 		<dependency org="com.exedio" name="copeservletutil" rev="31" conf="default->runtime,sources,changelog" />
 		<dependency org="com.exedio" name="jspm" rev="159" />
 		<dependency org="com.exedio" name="copeconsole" rev="6773" />
-		<dependency org="com.exedio" name="cronjob" rev="221">
+		<dependency org="com.exedio" name="cronjob" rev="325">
 			<exclude org="javax.servlet" module="servlet-api" />
 		</dependency>
-		<dependency org="com.exedio" name="cops" rev="267" />
+		<dependency org="com.exedio" name="cops" rev="267" conf="default->runtime,sources,changelog" />
 		<dependency org="com.exedio" name="sendmail" rev="198" />
 	</dependencies>
 </ivy-module>
