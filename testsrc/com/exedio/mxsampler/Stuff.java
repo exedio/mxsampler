@@ -24,4 +24,10 @@ public final class Stuff
 {
 	static final MxSampler sampler = new MxSampler();
 	public static final Model samplerModel = sampler.getModel();
+
+
+	private Stuff()
+	{
+		// prevent instantiation
+	}
 }

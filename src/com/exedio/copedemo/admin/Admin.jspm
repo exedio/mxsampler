@@ -52,5 +52,11 @@ final class Admin_Jspm
 	</body>
 </html><%
 	}
+
+
+	private Admin_Jspm()
+	{
+		// prevent instantiation
+	}
 }
 %>

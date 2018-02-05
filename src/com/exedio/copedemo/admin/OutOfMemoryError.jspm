@@ -55,5 +55,11 @@ final class OutOfMemoryError_Jspm
 			</table>
 		</form><%
 	}
+
+
+	private OutOfMemoryError_Jspm()
+	{
+		// prevent instantiation
+	}
 }
 %>

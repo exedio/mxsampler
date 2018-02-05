@@ -48,5 +48,11 @@ final class Email_Jspm
 			<input type="submit" value="Send"></input>
 		</form><%
 	}
+
+
+	private Email_Jspm()
+	{
+		// prevent instantiation
+	}
 }
 %>
