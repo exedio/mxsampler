@@ -36,14 +36,10 @@ public final class MxSamplerProperties extends Properties
 
 	private static Factory<ConnectProperties> mask(final Factory<ConnectProperties> original)
 	{
-		return new Factory<ConnectProperties>()
+		return source ->
 		{
-			@Override
-			public ConnectProperties create(final Source source)
-			{
-				// TODO deprecate MxSampler.maskConnectSource when moved into framework
-				return original.create(MxSampler.maskConnectSource(source));
-			}
+			// TODO deprecate MxSampler.maskConnectSource when moved into framework
+			return original.create(MxSampler.maskConnectSource(source));
 		};
 	}
 
@@ -79,14 +75,7 @@ public final class MxSamplerProperties extends Properties
 
 	public static Factory<MxSamplerProperties> factory()
 	{
-		return new Factory<MxSamplerProperties>()
-		{
-			@Override
-			public MxSamplerProperties create(final Source source)
-			{
-				return new MxSamplerProperties(source);
-			}
-		};
+		return source -> new MxSamplerProperties(source);
 	}
 
 	private MxSamplerProperties(final Source source)

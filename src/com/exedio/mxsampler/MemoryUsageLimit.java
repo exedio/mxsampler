@@ -86,14 +86,7 @@ public final class MemoryUsageLimit extends Properties
 
 	public static Factory<MemoryUsageLimit> factory(final String poolName)
 	{
-		return new Factory<MemoryUsageLimit>()
-		{
-			@Override
-			public MemoryUsageLimit create(final Source source)
-			{
-				return new MemoryUsageLimit(source, poolName);
-			}
-		};
+		return source -> new MemoryUsageLimit(source, poolName);
 	}
 
 	private MemoryUsageLimit(final Source source, final String poolName)

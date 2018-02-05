@@ -95,14 +95,7 @@ public final class MainProperties extends Properties
 
 	public static Factory<MainProperties> factory()
 	{
-		return new Factory<MainProperties>()
-		{
-			@Override
-			public MainProperties create(final Source source)
-			{
-				return new MainProperties(source);
-			}
-		};
+		return source -> new MainProperties(source);
 	}
 
 	private MainProperties(final Source source)
