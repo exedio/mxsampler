@@ -37,13 +37,13 @@ final class MxSamplerRevisions implements Revisions.Factory
 	private static Revisions getMysql()
 	{
 		return new Revisions(
-			new Revision(1, "add ThreadMXBean", new String[] {
+			new Revision(1, "add ThreadMXBean", 
 				"alter table `MxSamplerGlobal` " +
 					"add column `threadCount` int not null," +
 					"add column `peakThreadCount` int not null," +
 					"add column `totalStartedThreadCount` bigint not null," +
-					"add column `daemonThreadCount` int not null",
-			})
+					"add column `daemonThreadCount` int not null"
+			)
 		);
 	}
 
