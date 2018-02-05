@@ -38,7 +38,7 @@ final class MxSamplerMemoryPoolName extends Item
 			name.check(pool.getName());
 			return true;
 		}
-		catch(final ConstraintViolationException e)
+		catch(final ConstraintViolationException ignored)
 		{
 			return false;
 		}
