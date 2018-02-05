@@ -83,7 +83,7 @@ public class SampleTest extends ConnectedTest
 		}
 	}
 
-	private static final MxSamplerGlobal assertIt(
+	private static MxSamplerGlobal assertIt(
 			final MxSamplerGlobal expected,
 			final MxSampler sampler,
 			final Date before, final Date after,
@@ -97,7 +97,7 @@ public class SampleTest extends ConnectedTest
 		return model;
 	}
 
-	private static final <E extends Item> Iterator<E> iter(final Type<E> type)
+	private static <E extends Item> Iterator<E> iter(final Type<E> type)
 	{
 		final Query<E> q = new Query<E>(type.getThis());
 		q.setOrderBy(type.getThis(), true);
