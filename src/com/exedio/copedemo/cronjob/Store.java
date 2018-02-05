@@ -38,7 +38,7 @@ public final class Store implements CronjobStore
 	@Override
 	public List<? extends Job> getJobs()
 	{
-		final AbstractJob[] result = new AbstractJob[]{
+		final AbstractJob[] result = {
 				new SendErrorMailJob(),
 				new MxSamplerSampleJob(),
 				new MxSamplerPurgeJob(),
