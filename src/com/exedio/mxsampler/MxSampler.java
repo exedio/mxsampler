@@ -23,7 +23,6 @@ import com.exedio.cope.SetValue;
 import com.exedio.cope.Type;
 import com.exedio.cope.misc.ConnectToken;
 import com.exedio.cope.util.JobContext;
-import com.exedio.cope.util.Properties;
 import com.exedio.copedemo.MainProperties;
 import java.lang.management.ClassLoadingMXBean;
 import java.lang.management.ManagementFactory;
@@ -34,7 +33,6 @@ import java.lang.management.ThreadMXBean;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -63,45 +61,6 @@ public class MxSampler
 	public final Model getModel()
 	{
 		return samplerModel;
-	}
-
-	public static final Properties.Source maskConnectSource(final Properties.Source original)
-	{
-		return new Properties.Source(){
-
-			@Override
-			public String get(final String key)
-			{
-				// TODO
-				// implement a @CopeNoCache annotation and use it
-				// for purged types
-				// Then remove the lines below
-				if("cache.item.limit".equals(key) || "cache.query.limit".equals(key))
-					return "0";
-
-				final String originalResult = original.get(key);
-				if(originalResult!=null)
-					return originalResult;
-
-				if("schema.revision.table".equals(key))
-					return "MxSamplerRevision";
-				if("schema.revision.unique".equals(key))
-					return "MxSamplerRevisionUnique";
-				return null;
-			}
-
-			@Override
-			public String getDescription()
-			{
-				return original.getDescription();
-			}
-
-			@Override
-			public Collection<String> keySet()
-			{
-				return original.keySet();
-			}
-		};
 	}
 
 	public final ConnectToken connect(final String tokenName)

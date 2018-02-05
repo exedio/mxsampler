@@ -27,6 +27,7 @@ import com.exedio.cope.Model;
 import com.exedio.cope.misc.ConnectToken;
 import com.exedio.cope.util.JobContext;
 import com.exedio.cope.util.Properties;
+import java.util.Collection;
 
 public final class MxSamplerProperties extends Properties
 {
@@ -39,7 +40,46 @@ public final class MxSamplerProperties extends Properties
 		return source ->
 		{
 			// TODO deprecate MxSampler.maskConnectSource when moved into framework
-			return original.create(MxSampler.maskConnectSource(source));
+			return original.create(maskConnectSource(source));
+		};
+	}
+
+	private static Source maskConnectSource(final Source original)
+	{
+		return new Source(){
+
+			@Override
+			public String get(final String key)
+			{
+				// TODO
+				// implement a @CopeNoCache annotation and use it
+				// for purged types
+				// Then remove the lines below
+				if("cache.item.limit".equals(key) || "cache.query.limit".equals(key))
+					return "0";
+
+				final String originalResult = original.get(key);
+				if(originalResult!=null)
+					return originalResult;
+
+				if("schema.revision.table".equals(key))
+					return "MxSamplerRevision";
+				if("schema.revision.unique".equals(key))
+					return "MxSamplerRevisionUnique";
+				return null;
+			}
+
+			@Override
+			public String getDescription()
+			{
+				return original.getDescription();
+			}
+
+			@Override
+			public Collection<String> keySet()
+			{
+				return original.keySet();
+			}
 		};
 	}
 
