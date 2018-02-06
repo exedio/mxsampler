@@ -35,6 +35,17 @@ public final class JdbcPurger
 
 	static void clearDriverRegistrations()
 	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.AbandonedConnectionCleanupThread").
+			getDeclaredMethod("checkedShutdown").
+			invoke(null);
+		}
+		catch(final ReflectiveOperationException e)
+		{
+			throw new RuntimeException(e);
+		}
+
 		final ClassLoader cl = JdbcPurger.class.getClassLoader();
 
 		for(final Enumeration<Driver> drivers = DriverManager.getDrivers(); drivers.hasMoreElements(); )
