@@ -30,5 +30,13 @@
 			<exclude org="javax.servlet" module="servlet-api" />
 		</dependency>
 		<dependency org="com.exedio" name="cops" rev="267" conf="default->runtime,sources,changelog" />
+		<dependency org="javax.mail" name="mail" rev="1.4" conf="default->default,sources">
+			<!--
+				activation is included in JDK 1.6,
+				and sendmail requires JDK 1.6,
+				so we don't need it.
+			-->
+			<exclude org="javax.activation" module="activation" />
+		</dependency>
 	</dependencies>
 </ivy-module>
