@@ -30,13 +30,7 @@
 			<exclude org="javax.servlet" module="servlet-api" />
 		</dependency>
 		<dependency org="com.exedio" name="cops" rev="267" conf="default->runtime,sources,changelog" />
-		<dependency org="javax.mail" name="mail" rev="1.4" conf="default->default"><!-- needed for logback SMTPAppender -->
-			<!--
-				activation is included in JDK 1.6,
-				and sendmail requires JDK 1.6,
-				so we don't need it.
-			-->
-			<exclude org="javax.activation" module="activation" />
-		</dependency>
+		<dependency org="com.sun.mail" name="mailapi" rev="1.6.0" conf="default->default" /><!-- needed for logback SMTPAppender -->
+		<dependency org="com.sun.mail" name="smtp"    rev="1.6.0" conf="default->default" /><!-- needed for logback SMTPAppender -->
 	</dependencies>
 </ivy-module>

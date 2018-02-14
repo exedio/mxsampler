@@ -122,7 +122,8 @@
 			<fileset file="lib/trove4j.jar" />
 			<fileset file="lib/exedio-cope-util.jar" />
 			<fileset file="lib/exedio-cope-servletutil.jar" />
-			<fileset file="lib/mail.jar" />
+			<fileset file="lib/mailapi.jar" />
+			<fileset file="lib/smtp.jar" />
 			<fileset file="lib/activation.jar" />
 			<fileset file="lib/exedio-cronjob.jar" />
 			<fileset file="lib/hsqldb.jar" />
