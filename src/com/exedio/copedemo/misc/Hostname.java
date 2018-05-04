@@ -27,6 +27,7 @@ import java.net.UnknownHostException;
 
 public final class Hostname
 {
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 	public static String get()
 	{
 		try

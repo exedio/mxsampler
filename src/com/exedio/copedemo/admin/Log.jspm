@@ -30,9 +30,10 @@ import static com.exedio.copedemo.admin.LogCop.THROWABLE;
 import com.exedio.copedemo.admin.LogCop.Level;
 import org.slf4j.Logger;
 
+@SuppressWarnings("HardcodedLineSeparator")
 final class Log_Jspm
 {
-	@SuppressWarnings("HardcodedLineSeparator")
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass") // ok for jspm
 	static void writeBody(
 			final Out out,
 			final Logger logger)

@@ -26,6 +26,7 @@ package com.exedio.copedemo.admin;
 @SuppressWarnings("HardcodedLineSeparator")
 final class Home_Jspm
 {
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass") // ok for jspm
 	static void writeBody(
 			final Out out,
 			final HomeCop cop,

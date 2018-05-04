@@ -34,6 +34,7 @@ import static com.exedio.copedemo.admin.OutOfMemoryErrorCop.ALLOCATE_SIZE;
 @SuppressWarnings("HardcodedLineSeparator")
 final class OutOfMemoryError_Jspm
 {
+	@SuppressWarnings("StaticMethodOnlyUsedInOneClass") // ok for jspm
 	static void writeBody(
 			final Out out,
 			final int currentNumber)
