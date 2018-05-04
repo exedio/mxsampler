@@ -45,7 +45,7 @@ final class OutOfMemoryErrorCop extends AdminCop
 	}
 
 	private static final List<double[]> memoryLeak =
-			Collections.synchronizedList(new ArrayList<double[]>());
+			Collections.synchronizedList(new ArrayList<>());
 
 	@Override
 	protected void post(
