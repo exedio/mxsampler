@@ -221,4 +221,10 @@ public class MxSampler
 			throw new RuntimeException(e);
 		}
 	}
+
+	@Override
+	public final String toString()
+	{
+		return samplerModel.toString();
+	}
 }

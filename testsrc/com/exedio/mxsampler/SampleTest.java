@@ -34,6 +34,9 @@ public class SampleTest extends ConnectedTest
 {
 	public void testIt()
 	{
+		// samplerModel.toString() becomes much nicer once Model#enableSerialization is called
+		assertEquals(samplerModel.toString(), sampler.toString());
+
 		samplerModel.startTransaction("HistoryTest1");
 		assertEquals(0, MxSamplerGlobal.TYPE.search().size());
 		assertEquals(0, MxSamplerMemoryPool.TYPE.search().size());
