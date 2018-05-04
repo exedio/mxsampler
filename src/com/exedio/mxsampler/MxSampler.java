@@ -135,7 +135,7 @@ public class MxSampler
 		// save data
 		try
 		{
-			samplerModel.startTransaction(toString() + " sample");
+			samplerModel.startTransaction(this + " sample");
 			final MxSamplerGlobal model;
 			{
 				sv.clear();
