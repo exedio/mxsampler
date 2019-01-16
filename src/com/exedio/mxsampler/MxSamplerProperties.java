@@ -94,11 +94,6 @@ public final class MxSamplerProperties extends Properties
 		ConnectToken.setProperties(model, cope);
 	}
 
-	@Probe String probeCope()
-	{
-		return cope.probe();
-	}
-
 
 	// purge
 

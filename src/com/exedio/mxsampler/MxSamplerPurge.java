@@ -107,7 +107,7 @@ final class MxSamplerPurge extends Item
 		{
 			if(cc.getTemplate()==field)
 			{
-				final FunctionField<?> result = cc.getCopy();
+				final FunctionField<?> result = cc.getCopyField();
 				@SuppressWarnings("unchecked")
 				final F resultCasted = (F)result;
 				return resultCasted;

@@ -25,11 +25,11 @@
 		<dependency org="com.exedio" name="copeutil" rev="637" conf="default->runtime,sources,changelog" />
 		<dependency org="com.exedio" name="copeservletutil" rev="85" conf="default->runtime,sources,changelog" />
 		<dependency org="com.exedio" name="jspm" rev="202" />
-		<dependency org="com.exedio" name="copeconsole" rev="7000" />
-		<dependency org="com.exedio" name="cronjob" rev="325">
+		<dependency org="com.exedio" name="copeconsole" rev="7028" />
+		<dependency org="com.exedio" name="cronjob" rev="400">
 			<exclude org="javax.servlet" module="servlet-api" />
 		</dependency>
-		<dependency org="com.exedio" name="cops" rev="267" conf="default->runtime,sources,changelog" />
+		<dependency org="com.exedio" name="cops" rev="528" conf="default->runtime,sources,changelog" />
 		<dependency org="com.sun.mail" name="mailapi" rev="1.6.0" conf="default->default" /><!-- needed for logback SMTPAppender -->
 		<dependency org="com.sun.mail" name="smtp"    rev="1.6.0" conf="default->default" /><!-- needed for logback SMTPAppender -->
 	</dependencies>

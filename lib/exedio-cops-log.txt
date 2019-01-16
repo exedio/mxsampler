@@ -7,6 +7,14 @@ omit bug fixes.
 The items are sorted inversely, i.e. latest items are on top
 
 --------------------------------------------------------------------------
+* HTTP header security:
+	Content-Security-Policy, Referrer-Policy, X-Content-Type-Options, X-Frame-Options, X-XSS-Protection
+	set in response.
+* PropertiesInstanceServlet added.
+* Properties#newProbeAbortedException supported by PropertiesServlet
+* Properties.Source#reload() supported by PropertiesServlet.
+* requires JDK 1.8.0_60
+* CopsServlets now check that they are mounted at "/*" paths. Can be disabled by overwriting suppressPathCheck().
 * added ivy configurations 'sources' and 'changelog'
 	sources and changelog won't be included in 'runtime' config per default anymore
 * Resource rejects requests with query part, responds with 404 Not Found.
@@ -33,22 +41,22 @@ The items are sorted inversely, i.e. latest items are on top
 	addParameter(String, Cop) is used with parameters containing non-safe
 	characters.
 * change return type of Cop#needsSecure() from Boolean to boolean.
-	
+
 	Forcing http is no longer supported because of numerous problems.
 	THIS CHANGE IS NOT BACKWARDS COMPATIBLE, YOU MUST ADJUST YOUR CODE !
-	
+
 	Take care, because the mapping between old and new return values of
 	needsSecure may easily lead to mistakes! Boolean.FALSE is *not*
 	replaced by false! See the table below:
-	
+
 		meaning       | old           | new
 		-----------------------------------------------
 		https         | Boolean.TRUE  | true
 		http          | Boolean.FALSE | <not supported>
 		any (default) | null          | false
-	
+
 	If you do not override needsSecure(), you don't have to do anything.
-	
+
 * remove forms
 	- does not need commons-fileupload.jar and commons-io.jar anymore
 	- you MUST update copernica to at least build 46

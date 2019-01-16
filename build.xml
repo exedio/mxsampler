@@ -53,6 +53,7 @@
 
 	<path id="runtime.lib">
 		<path refid="src.lib" />
+		<pathelement location="lib/exedio-cope-hsqldb.jar" />
 		<pathelement location="lib/hsqldb.jar" />
 		<pathelement location="lib/mysql-connector-java.jar" />
 	</path>
@@ -119,6 +120,8 @@
 		</copy>
 		<copy todir="web/WEB-INF/lib">
 			<fileset file="lib/exedio-cope.jar" />
+			<fileset file="lib/exedio-cope-hsqldb.jar" />
+			<fileset file="lib/exedio-cope-mysql.jar" />
 			<fileset file="lib/exedio-cope-console.jar" />
 			<fileset file="lib/exedio-cops.jar" />
 			<fileset file="lib/trove4j.jar" />

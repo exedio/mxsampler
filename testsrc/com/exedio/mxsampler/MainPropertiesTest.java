@@ -38,7 +38,7 @@ public final class MainPropertiesTest extends TestCase
 		final MainProperties p = MainProperties.factory().create(
 				Sources.load(getClass().getResource("mainPropertiesTest.properties")));
 
-		for(final Field field : p.getFields())
+		for(final Field<?> field : p.getFields())
 		{
 			final String key = field.getKey();
 			if(!key.startsWith("mxSampler.cope."))
