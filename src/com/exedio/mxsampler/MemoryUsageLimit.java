@@ -62,8 +62,11 @@ public final class MemoryUsageLimit extends Properties
 		}
 	}
 
-	@Probe String probePoolName()
+	@Probe String probePoolName() throws ProbeAbortedException
 	{
+		if(poolName.isEmpty())
+			throw newProbeAbortedException("pool disabled");
+
 		for(final MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans())
 		{
 			if(matches(pool))

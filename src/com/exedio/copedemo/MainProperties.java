@@ -55,7 +55,7 @@ public final class MainProperties extends Properties
 	// limit
 
 	public final MemoryUsageLimit limitOld  = value("limit.old",  true, MemoryUsageLimit.factory("PS Old Gen" ));
-	public final MemoryUsageLimit limitPerm = value("limit.perm", true, MemoryUsageLimit.factory("PS Perm Gen"));
+	public final MemoryUsageLimit limitPerm = value("limit.perm", true, MemoryUsageLimit.factory(""));
 
 
 	public final String adminRefererPrefix = value("admin.refererPrefix", "https://localhost:8443" + contextPath + "/");

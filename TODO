@@ -2,4 +2,3 @@
 * use Model#startTransactionTry
 * use ConnectToken#returnOnFailureOf
 * use ConnectToken#setProperties(Model,Supplier)
-* drop limit.perm, because it does not exist on JDK 1.8
