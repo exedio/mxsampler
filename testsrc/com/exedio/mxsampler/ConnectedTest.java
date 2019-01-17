@@ -56,7 +56,7 @@ public class ConnectedTest extends CopeModelTest
 
 	private static MainProperties getMainProperties()
 	{
-		return MainProperties.factory().create(getPropertiesSource());
+		return MainProperties.instance.create(getPropertiesSource());
 	}
 
 	private static Source getPropertiesSource()

@@ -22,10 +22,9 @@
 
 package com.exedio.copedemo.admin;
 
-import com.exedio.cope.util.Properties.Factory;
+import com.exedio.cope.util.PropertiesInstance;
 import com.exedio.copedemo.MainProperties;
-import com.exedio.copedemo.feature.cops.PropertiesInstanceServlet;
-import com.exedio.copedemo.feature.util.PropertiesInstance;
+import com.exedio.cops.PropertiesInstanceServlet;
 
 public final class PropertiesServlet extends PropertiesInstanceServlet<MainProperties>
 {
@@ -35,12 +34,6 @@ public final class PropertiesServlet extends PropertiesInstanceServlet<MainPrope
 	protected PropertiesInstance<MainProperties> get()
 	{
 		return MainProperties.instance;
-	}
-
-	@Override
-	protected Factory<MainProperties> factory()
-	{
-		return MainProperties.factory();
 	}
 
 	@Override

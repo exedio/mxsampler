@@ -35,7 +35,7 @@ public final class MainPropertiesTest extends TestCase
 {
 	public void testIt()
 	{
-		final MainProperties p = MainProperties.factory().create(
+		final MainProperties p = MainProperties.instance.create(
 				Sources.load(getClass().getResource("mainPropertiesTest.properties")));
 
 		for(final Field<?> field : p.getFields())

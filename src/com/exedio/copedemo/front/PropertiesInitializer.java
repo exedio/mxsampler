@@ -50,7 +50,7 @@ public final class PropertiesInitializer implements ServletContextListener
 
 		final ServletContext ctx = sce.getServletContext();
 
-		final MainProperties properties = MainProperties.instance.set(MainProperties.factory().create(ServletSource.create(ctx)));
+		final MainProperties properties = MainProperties.instance.set(ServletSource.create(ctx));
 		if(properties.mxSampler!=null)
 			properties.mxSampler.setProperties(MxSamplerJob.model);
 	}

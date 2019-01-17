@@ -21,16 +21,6 @@
 		</classpath>
 	</taskdef>
 
-	<target name="feature.compile">
-		<compile srcdir="featuresrc">
-			<classpath>
-				<path refid="src.lib" />
-				<pathelement location="lib/exedio-cope-instrument-annotations.jar" />
-				<pathelement location="lib/findbugs-annotations.jar" />
-			</classpath>
-		</compile>
-	</target>
-
 	<target name="src.jspm">
 		<jspm>
 			<fileset dir="src" includes="**/*.jspm">
@@ -43,7 +33,6 @@
 	</target>
 
 	<path id="src.lib">
-		<pathelement location="build/classes/featuresrc" />
 		<pathelement location="lib/exedio-cops.jar" />
 		<pathelement location="lib/exedio-cope.jar" />
 		<pathelement location="lib/exedio-cronjob.jar" />
@@ -60,7 +49,7 @@
 
 
 
-	<target name="src.compile" depends="feature.compile, src.jspm">
+	<target name="src.compile" depends="src.jspm">
 		<compile srcdir="src">
 			<classpath>
 				<path refid="src.lib" />
@@ -115,7 +104,6 @@
 
 	<target name="web" depends="src.compile">
 		<copy todir="web/WEB-INF/classes">
-			<fileset dir="build/classes/featuresrc" />
 			<fileset dir="build/classes/src" />
 		</copy>
 		<copy todir="web/WEB-INF/lib">
@@ -203,7 +191,7 @@
 		<delete dir="tomcat" />
 	</target>
 
-	<target name="api" depends="feature.compile, src">
+	<target name="api" depends="src">
 
 		<delete dir="build/api" />
 		<mkdir  dir="build/api" />
@@ -250,7 +238,6 @@
 					excludeFilter="conf/findbugs-exclude.xml"
 					effort="max"
 					reportlevel="low">
-			<class location="${basedir}/build/classes/featuresrc" />
 			<class location="${basedir}/build/classes/src" />
 			<class location="${basedir}/build/classes/testsrc" />
 			<auxclasspath>

@@ -23,7 +23,7 @@
 package com.exedio.copedemo;
 
 import com.exedio.cope.util.Properties;
-import com.exedio.copedemo.feature.util.PropertiesInstance;
+import com.exedio.cope.util.PropertiesInstance;
 import com.exedio.mxsampler.MemoryUsageLimit;
 import com.exedio.mxsampler.MxSamplerProperties;
 
@@ -63,11 +63,6 @@ public final class MainProperties extends Properties
 
 	// common code
 
-	public static Factory<MainProperties> factory()
-	{
-		return MainProperties::new;
-	}
-
 	private MainProperties(final Source source)
 	{
 		super(source);
@@ -76,7 +71,7 @@ public final class MainProperties extends Properties
 
 	// instance
 
-	public static final PropertiesInstance<MainProperties> instance = new PropertiesInstance<>();
+	public static final PropertiesInstance<MainProperties> instance = PropertiesInstance.create(MainProperties::new);
 
 	public static MainProperties get()
 	{
