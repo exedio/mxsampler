@@ -42,16 +42,6 @@ public final class MainProperties extends Properties
 	public final MxSamplerProperties mxSampler = value("mxSampler", MxSamplerProperties.factory());
 
 
-	// mail
-
-	private final String mailFrom = value("mail.from", (String)null);
-
-	public String getMailFrom()
-	{
-		return mailFrom;
-	}
-
-
 	// limit
 
 	public final MemoryUsageLimit limitOld  = value("limit.old",  true, MemoryUsageLimit.factory("PS Old Gen" ));
