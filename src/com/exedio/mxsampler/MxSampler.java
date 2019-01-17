@@ -220,6 +220,7 @@ public class MxSampler
 		{
 			throw new RuntimeException(e);
 		}
+		samplerModel.purgeSchema(ctx);
 	}
 
 	@Override
