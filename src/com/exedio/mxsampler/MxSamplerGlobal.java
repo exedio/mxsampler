@@ -19,6 +19,7 @@
 package com.exedio.mxsampler;
 
 import com.exedio.cope.ActivationParameters;
+import com.exedio.cope.CopeExternal;
 import com.exedio.cope.DateField;
 import com.exedio.cope.DoubleField;
 import com.exedio.cope.IntegerField;
@@ -27,6 +28,7 @@ import com.exedio.cope.LongField;
 import com.exedio.cope.Type;
 import com.exedio.cope.TypesBound;
 
+@CopeExternal
 final class MxSamplerGlobal extends Item
 {
 	static final DateField date = new DateField().toFinal().unique();

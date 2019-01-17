@@ -26,6 +26,7 @@ import static com.exedio.cope.SchemaInfo.supportsNativeDate;
 import static com.exedio.cope.misc.TimeUtil.toMillies;
 
 import com.exedio.cope.ActivationParameters;
+import com.exedio.cope.CopeExternal;
 import com.exedio.cope.CopyConstraint;
 import com.exedio.cope.DateField;
 import com.exedio.cope.FunctionField;
@@ -60,6 +61,9 @@ final class MxSamplerPurge extends Item
 			final String samplerString)
 	throws SQLException
 	{
+		if(!type.isAnnotationPresent(CopeExternal.class))
+			throw new IllegalArgumentException(type.getID());
+
 		ctx.stopIfRequested();
 		final DateField field = replaceByCopy(MxSamplerGlobal.date, type);
 		final Model model = type.getModel();

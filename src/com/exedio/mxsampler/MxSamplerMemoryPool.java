@@ -19,6 +19,7 @@
 package com.exedio.mxsampler;
 
 import com.exedio.cope.ActivationParameters;
+import com.exedio.cope.CopeExternal;
 import com.exedio.cope.CopeSchemaName;
 import com.exedio.cope.DateField;
 import com.exedio.cope.IntegerField;
@@ -32,6 +33,7 @@ import com.exedio.cope.pattern.CompositeField;
 import java.util.Arrays;
 import java.util.List;
 
+@CopeExternal
 final class MxSamplerMemoryPool extends Item
 {
 	private static final ItemField<MxSamplerGlobal> model = ItemField.create(MxSamplerGlobal.class).toFinal();

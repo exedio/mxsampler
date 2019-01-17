@@ -1,7 +1,5 @@
 * use instrumentor
 * use Model#startTransactionTry
 * use ConnectToken#returnOnFailureOf
-* use @CopeExternal instead of MxSampler#maskConnectSource
-		setting cache.item.limit=0 and cache.query.limit=0
 * use ConnectToken#setProperties(Model,Supplier)
 * drop limit.perm, because it does not exist on JDK 1.8
