@@ -97,6 +97,14 @@
 		<servlet-name>logback</servlet-name>
 		<url-pattern>/logback</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<filter-name>logback-filter</filter-name>
+		<filter-class>com.exedio.copedemo.admin.LogbackFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>logback-filter</filter-name>
+		<servlet-name>logback</servlet-name>
+	</filter-mapping>
 
 	<session-config>
 		<session-timeout>30<!--minutes--></session-timeout>
