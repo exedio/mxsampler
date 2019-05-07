@@ -10,7 +10,7 @@
 				url="http://opensource.org/licenses/mit-license.html" />
 	</info>
 	<dependencies>
-		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="default->master,sources" />
+		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="default->default,sources" />
 		<dependency org="org.apache" name="apache-tomcat" rev="7.0.29" />
 		<dependency org="findbugs-x" name="findbugs" rev="3.0.0" />
 		<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3">
